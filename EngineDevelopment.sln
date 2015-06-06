@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathLibrary", "MathLibrary\MathLibrary.vcxproj", "{0E8EFB29-26CD-476F-B255-AA02128A24A9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathLibraryTestCases", "MathLibraryTestCases\MathLibraryTestCases.vcxproj", "{A17ADF27-8CD9-45AB-B9D7-2685B748F4FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E8EFB29-26CD-476F-B255-AA02128A24A9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0E8EFB29-26CD-476F-B255-AA02128A24A9}.Debug|Win32.Build.0 = Debug|Win32
+		{0E8EFB29-26CD-476F-B255-AA02128A24A9}.Release|Win32.ActiveCfg = Release|Win32
+		{0E8EFB29-26CD-476F-B255-AA02128A24A9}.Release|Win32.Build.0 = Release|Win32
+		{A17ADF27-8CD9-45AB-B9D7-2685B748F4FC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A17ADF27-8CD9-45AB-B9D7-2685B748F4FC}.Debug|Win32.Build.0 = Debug|Win32
+		{A17ADF27-8CD9-45AB-B9D7-2685B748F4FC}.Release|Win32.ActiveCfg = Release|Win32
+		{A17ADF27-8CD9-45AB-B9D7-2685B748F4FC}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
