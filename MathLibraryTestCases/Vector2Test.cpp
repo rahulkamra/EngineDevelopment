@@ -99,5 +99,3 @@ TEST(Vector2D, AssignmentMinusEqual)
 	EXPECT_TRUE(vec2.x == 1 && vec2.y == -1);
 
 }
-
-
