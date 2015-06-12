@@ -16,7 +16,7 @@ namespace math
 		{
 		}
 
-		inline static Matrix2D createRotateMatrix(efloat angle)
+		inline static Matrix2D createRotateMatrix(const efloat angle)
 		{
 			efloat cosTheta = cos(angle);
 			efloat sinTheta = sin(angle);
@@ -52,25 +52,53 @@ namespace math
 		}
 
 
-		inline Vector2D getColumn()
+		inline const Vector2D getColumn(const int colIndex)
 		{
 
 		}
 
-		inline Vector2D getRow()
+		inline const Vector2D getRow(const int rowIndex)
 		{
 
 		}
 
-		inline void setColumn(Vector2D col)
+		inline const void setColumn(const int colIndex, const Vector2D col)
 		{
+			if (colIndex == 0)
+			{
+				this->a = col.x;
+				this->c = col.y;
+			}
+			else if (colIndex == 1)
+			{
+				this->b = col.x;
+				this->d = col.y;
+			}
+			else
+			{
+				cout << "Unknow Index";
+			}
+		}
+
+		inline const  void  setRow(const int rowIndex, const Vector2D row)
+		{
+			if (rowIndex == 0)
+			{
+				this->a = row.x;
+				this->b = row.y;
+			}
+			else if (rowIndex == 1)
+			{
+				this->c = row.x;
+				this->d = row.y;
+			}
+			else
+			{
+				cout << "Unknow Index";
+			}
 
 		}
 
-		inline void setRow(Vector2D row)
-		{
-
-		}
 
 		inline std::string toString()
 		{
@@ -82,7 +110,7 @@ namespace math
 	};
 
 
-	inline Vector2D operator*(const Matrix2D& lhs, const Vector2D& rhs)
+	inline Vector2D const operator*(const Matrix2D& lhs, const Vector2D& rhs)
 	{
 
 		return Vector2D

@@ -1,6 +1,7 @@
 #pragma once
 #include <gtest\gtest.h>
 #include <Matrix2D.h>
+#include <Vector2D.h>
 #include "TestUtils.h"
 
 using namespace math;
@@ -50,3 +51,19 @@ TEST(Matrix2D, CreateMatrixFromRotation)
 
 
 }
+
+
+TEST(Matrix2D, SetColumn)
+{
+	Matrix2D matrix(10, 3,
+				    40, 1);
+
+	matrix.setColumn(0, Vector2D(12,13));
+
+	EXPECT_TRUE(matrix.a == 12 && matrix.c == 13);
+	matrix.setRow(0, Vector2D(19, 13));
+
+	EXPECT_TRUE(matrix.a == 19 && matrix.b == 13);
+
+}
+
