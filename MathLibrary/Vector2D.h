@@ -46,7 +46,13 @@ namespace math
 			return *this;
 		}
 
-
+		inline Vector2D& swap()
+		{
+			const efloat temp = this->x;
+			this->x = this->y;
+			this->y = temp;
+			return *this;
+		}
 	};
 
 	inline Vector2D operator+(const Vector2D& lhs, const Vector2D& rhs)
@@ -73,6 +79,7 @@ namespace math
 	{
 		return Vector2D(lhs.x / scaler, lhs.y / scaler);
 	}
+
 }
 
 

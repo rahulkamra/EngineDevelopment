@@ -99,3 +99,12 @@ TEST(Vector2D, AssignmentMinusEqual)
 	EXPECT_TRUE(vec2.x == 1 && vec2.y == -1);
 
 }
+
+TEST(Vector2D, Swap)
+{
+	Vector2D vec1(1, 2);
+
+	Vector2D vec2 = vec1.swap();
+	EXPECT_TRUE(vec2.x == 2 && vec2.y == 1);
+
+}
