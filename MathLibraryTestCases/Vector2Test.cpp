@@ -108,3 +108,13 @@ TEST(Vector2D, Swap)
 	EXPECT_TRUE(vec2.x == 2 && vec2.y == 1);
 
 }
+
+TEST(Vector2D, ArraySubscript)
+{
+	Vector2D vec1(1, 2);
+
+	efloat x = vec1[0];
+	efloat y = vec1[1];
+	EXPECT_TRUE(x == 1 && y == 2);
+
+}

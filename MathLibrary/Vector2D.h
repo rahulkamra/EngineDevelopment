@@ -53,6 +53,11 @@ namespace math
 			this->y = temp;
 			return *this;
 		}
+
+		inline efloat& operator[](const int& index)
+		{
+			return *(&this->x + index);
+		}
 	};
 
 	inline Vector2D operator+(const Vector2D& lhs, const Vector2D& rhs)
