@@ -247,3 +247,13 @@ TEST(Vector2D, Length)
 	
 	EXPECT_TRUE(vec1.length() == sqrt(5.00f));
 }
+
+TEST(Vector2D, ArraySubscript)
+{
+	Vector2D vec1(1, 2);
+
+	efloat x = vec1[0];
+	efloat y = vec1[1];
+	EXPECT_TRUE(x == 1 && y == 2);
+
+}

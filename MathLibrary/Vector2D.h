@@ -101,6 +101,11 @@ namespace math
 			return *this;
 		}
 
+		inline efloat& operator[](const int& index)
+		{
+			return *(&this->x + index);
+		}
+
 		inline Vector2D* ptr()
 		{
 			void* temp = &this->x;
