@@ -4,6 +4,18 @@
 
 using namespace math;
 
+TEST(Vector2D, Constructor)
+{
+	Vector2D vec1(1, 2);
+
+	efloat arrayInit[2] = { 1.0f, 2.0f };
+	Vector2D vec2{arrayInit};
+
+	Vector2D vec3{1.0f,2.0f};
+
+	EXPECT_TRUE(vec1.x == vec2.x &&  vec2.x  == vec3.x && vec1.y == vec2.y && vec2.y == vec3.y);
+}
+
 TEST(Vector2D , Add)
 {
 	Vector2D vec1(2, 5);
@@ -15,16 +27,6 @@ TEST(Vector2D , Add)
 	EXPECT_TRUE(result.x == result1.x && result.y == result1.y);
 }
 
-TEST(Vector2D, AddScalar)
-{
-	Vector2D vec1(2, 5);
-	float scaler = 2.0f;
-
-	Vector2D result(vec1.x + scaler, vec1.y + scaler);
-	Vector2D result1 = vec1 + scaler;
-
-	EXPECT_TRUE(result.x == result1.x && result.y == result1.y);
-}
 
 TEST(Vector2D, Subtract)
 {
@@ -38,30 +40,6 @@ TEST(Vector2D, Subtract)
 }
 
 
-TEST(Vector2D, SubtractScalar)
-{
-	Vector2D vec1(2, 5);
-	float scaler = 2.0f;
-
-	Vector2D result(vec1.x - scaler, vec1.y - scaler);
-	Vector2D result1 = vec1 - scaler;
-
-	EXPECT_TRUE(result.x == result1.x && result.y == result1.y);
-}
-
-
-TEST(Vector2D, Multiply)
-{
-	Vector2D vec1(2, 5);
-	Vector2D vec2(3, 2);
-
-	Vector2D result(vec1.x * vec2.x, vec1.y * vec2.y);
-	Vector2D result1 = vec1 * vec2;
-
-	EXPECT_TRUE(result.x == result1.x && result.y == result1.y);
-}
-
-
 TEST(Vector2D, MultiplyScalar)
 {
 	Vector2D vec1(2, 5);
@@ -69,18 +47,6 @@ TEST(Vector2D, MultiplyScalar)
 
 	Vector2D result(vec1.x * scaler, vec1.y *scaler);
 	Vector2D result1 = vec1 * scaler;
-
-	EXPECT_TRUE(result.x == result1.x && result.y == result1.y);
-}
-
-
-TEST(Vector2D, Divide)
-{
-	Vector2D vec1(2, 5);
-	Vector2D vec2(3, 2);
-
-	Vector2D result(vec1.x / vec2.x, vec1.y / vec2.y);
-	Vector2D result1 = vec1 / vec2;
 
 	EXPECT_TRUE(result.x == result1.x && result.y == result1.y);
 }
@@ -217,13 +183,6 @@ TEST(Vector2D, Swap)
 
 }
 
-TEST(Vector2D, Ptr)
-{
-	Vector2D vec1(1, 2);
-	Vector2D* vec2 = vec1.ptr();
-
-	EXPECT_TRUE(vec2->x == 1 && vec2->y == 2);
-}
 
 TEST(Vector2D, IsEqual)
 {

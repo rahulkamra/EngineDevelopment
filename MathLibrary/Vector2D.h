@@ -11,7 +11,34 @@ namespace math
 		{
 		}
 
-		efloat x, y;
+		explicit Vector2D(efloat data[2]) :x(data[0]), y(data[1])
+		{
+		}
+
+		union
+		{
+			efloat data[2];
+
+			struct
+			{
+				efloat x;
+				efloat y;
+			};
+
+			struct
+			{
+				efloat u;
+				efloat v;
+			};
+
+			struct
+			{
+				efloat r;
+				efloat g;
+			};
+
+		};
+		
 
 		inline efloat dot(Vector2D* rhs)
 		{
@@ -103,13 +130,7 @@ namespace math
 
 		inline efloat& operator[](const int& index)
 		{
-			return *(&this->x + index);
-		}
-
-		inline Vector2D* ptr()
-		{
-			void* temp = &this->x;
-			return static_cast<Vector2D*>(temp);
+			return data[index];
 		}
 
 		inline efloat distance(Vector2D* rhs)
@@ -118,29 +139,9 @@ namespace math
 		}
 	};
 
-	inline Vector2D operator+(efloat scaler, const Vector2D& rhs)
-	{
-		return Vector2D(scaler+rhs.x, scaler+rhs.y);
-	}
-
-	inline Vector2D operator+(const Vector2D& lhs, efloat scaler)
-	{
-		return scaler + lhs;
-	}
-
 	inline Vector2D operator+(const Vector2D& lhs, const Vector2D& rhs)
 	{
 		return Vector2D(lhs.x + rhs.x, lhs.y + rhs.y);
-	}
-
-	inline Vector2D operator-(efloat scaler, const Vector2D& rhs)
-	{
-		return Vector2D(scaler - rhs.x, scaler - rhs.y);
-	}
-
-	inline Vector2D operator-(const Vector2D& lhs, efloat scaler)
-	{
-		return Vector2D(lhs.x - scaler, lhs.y - scaler);
 	}
 
 	inline Vector2D operator-(const Vector2D& lhs, const Vector2D& rhs)
@@ -148,10 +149,6 @@ namespace math
 		return Vector2D(lhs.x - rhs.x, lhs.y - rhs.y);
 	}
 
-	inline Vector2D operator*(const Vector2D& lhs, const Vector2D& rhs)
-	{
-		return Vector2D(lhs.x * rhs.x, lhs.y * rhs.y);
-	}
 
 	inline Vector2D operator*(efloat scaler, const Vector2D& rhs)
 	{
@@ -163,10 +160,6 @@ namespace math
 		return scaler * lhs;
 	}
 
-	inline Vector2D operator/(const Vector2D& lhs, const Vector2D& rhs)
-	{
-		return Vector2D(lhs.x / rhs.x, lhs.y / rhs.y);
-	}
 
 	inline Vector2D operator/(const Vector2D& lhs, efloat scaler)
 	{
