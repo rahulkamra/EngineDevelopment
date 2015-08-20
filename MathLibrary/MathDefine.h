@@ -1,10 +1,5 @@
 #pragma once;
 
-typedef int eint;
-typedef float efloat;
-
-
-
 #define MATH_E        2.71828182845904523536
 #define MATH_LOG2E    1.44269504088896340736
 #define MATH_LOG10E   0.434294481903251827651

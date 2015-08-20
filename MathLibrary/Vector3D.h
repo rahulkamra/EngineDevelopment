@@ -1,5 +1,6 @@
-	#pragma once
-	#include <MathDefine.h>
+#pragma once
+#include <MathDefine.h>
+#include <Types.h>
 namespace math
 {
 	struct Vector3D

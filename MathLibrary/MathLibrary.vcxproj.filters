@@ -27,5 +27,8 @@
     <ClInclude Include="Vector3D.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
