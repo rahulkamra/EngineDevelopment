@@ -8,7 +8,7 @@ TEST(Vector2D, Constructor)
 {
 	Vector2D vec1(1, 2);
 
-	efloat arrayInit[2] = { 1.0f, 2.0f };
+	f32 arrayInit[2] = { 1.0f, 2.0f };
 	Vector2D vec2{arrayInit};
 
 	Vector2D vec3{1.0f,2.0f};
@@ -211,8 +211,8 @@ TEST(Vector2D, ArraySubscript)
 {
 	Vector2D vec1(1, 2);
 
-	efloat x = vec1[0];
-	efloat y = vec1[1];
+	f32 x = vec1[0];
+	f32 y = vec1[1];
 	
 	EXPECT_TRUE(x == 1 && y == 2);
 

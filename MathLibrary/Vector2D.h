@@ -7,45 +7,45 @@ namespace math
 {
 	struct Vector2D
 	{
-		explicit Vector2D(efloat x = 0.0f, efloat y = 0.0f) :x(x), y(y)
+		explicit Vector2D(f32 x = 0.0f, f32 y = 0.0f) :x(x), y(y)
 		{
 		}
 
-		explicit Vector2D(efloat data[2]) :x(data[0]), y(data[1])
+		explicit Vector2D(f32 data[2]) :x(data[0]), y(data[1])
 		{
 		}
 
 		union
 		{
-			efloat data[2];
+			f32 data[2];
 
 			struct
 			{
-				efloat x;
-				efloat y;
+				f32 x;
+				f32 y;
 			};
 
 			struct
 			{
-				efloat u;
-				efloat v;
+				f32 u;
+				f32 v;
 			};
 
 			struct
 			{
-				efloat r;
-				efloat g;
+				f32 r;
+				f32 g;
 			};
 
 		};
 		
 
-		inline efloat dot(const Vector2D& rhs) const
+		inline f32 dot(const Vector2D& rhs) const
 		{
 			return this->x * rhs.x + this->y * rhs.y;
 		}
 
-		inline efloat length() const
+		inline f32 length() const
 		{
 			return sqrt(dot(*this));
 		}
@@ -58,7 +58,7 @@ namespace math
 			return *this;
 		}
 
-		inline Vector2D& operator+=(efloat scaler)
+		inline Vector2D& operator+=(f32 scaler)
 		{
 			this->x += scaler;
 			this->y += scaler;
@@ -72,7 +72,7 @@ namespace math
 			return *this;
 		}
 
-		inline Vector2D& operator-=(efloat scaler)
+		inline Vector2D& operator-=(f32 scaler)
 		{
 			this->x -= scaler;
 			this->y -= scaler;
@@ -86,7 +86,7 @@ namespace math
 			return *this;
 		}
 
-		inline Vector2D& operator*=(efloat scaler)
+		inline Vector2D& operator*=(f32 scaler)
 		{
 			this->x *= scaler;
 			this->y *= scaler;
@@ -100,7 +100,7 @@ namespace math
 			return *this;
 		}
 
-		inline Vector2D& operator/=(efloat scaler)
+		inline Vector2D& operator/=(f32 scaler)
 		{
 			this->x /= scaler;
 			this->y /= scaler;
@@ -122,18 +122,18 @@ namespace math
 
 		inline Vector2D& swap()
 		{
-			const efloat temp = this->x;
+			const f32 temp = this->x;
 			this->x = this->y;
 			this->y = temp;
 			return *this;
 		}
 
-		inline efloat operator[](const int& index) const
+		inline f32 operator[](const int& index) const
 		{
 			return data[index];
 		}
 
-		inline efloat distance(const Vector2D& rhs) const
+		inline f32 distance(const Vector2D& rhs) const
 		{
 			return sqrt(((rhs.x - this->x)*(rhs.x - this->x))-((rhs.x - this->x)*(rhs.x - this->x)));
 		}
@@ -150,18 +150,18 @@ namespace math
 	}
 
 
-	inline Vector2D operator*(efloat scaler, const Vector2D& rhs)
+	inline Vector2D operator*(f32 scaler, const Vector2D& rhs)
 	{
 		return Vector2D(scaler*rhs.x, scaler*rhs.y);
 	}
 
-	inline Vector2D operator*(const Vector2D& lhs, efloat scaler)
+	inline Vector2D operator*(const Vector2D& lhs, f32 scaler)
 	{
 		return scaler * lhs;
 	}
 
 
-	inline Vector2D operator/(const Vector2D& lhs, efloat scaler)
+	inline Vector2D operator/(const Vector2D& lhs, f32 scaler)
 	{
 		return Vector2D(lhs.x / scaler, lhs.y / scaler);
 	}

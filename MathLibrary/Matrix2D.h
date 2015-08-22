@@ -9,17 +9,17 @@ namespace math
 	struct Matrix2D
 	{
 
-		efloat a, b,
+		f32 a, b,
 			  c, d;
 
-		explicit Matrix2D(efloat a = 1.0f, efloat b = 0.0f, efloat c = 0.0f, efloat d = 1.0f) :a(a), b(b), c(c), d(d)
+		explicit Matrix2D(f32 a = 1.0f, f32 b = 0.0f, f32 c = 0.0f, f32 d = 1.0f) :a(a), b(b), c(c), d(d)
 		{
 		}
 
-		inline static Matrix2D createRotateMatrix(const efloat angle)
+		inline static Matrix2D createRotateMatrix(const f32 angle)
 		{
-			efloat cosTheta = cos(angle);
-			efloat sinTheta = sin(angle);
+			f32 cosTheta = cos(angle);
+			f32 sinTheta = sin(angle);
 
 			return Matrix2D
 				(
