@@ -68,7 +68,7 @@ TEST(Vector2D, Dot)
 {
 	Vector2D vec1(1, 2);
 	Vector2D vec2(2, 1);
-	float result = vec1.dot(&vec2);
+	float result = vec1.dot(vec2);
 	float result1 = 1 * 2 + 2 * 1;
 	
 	EXPECT_TRUE(result == result1);
@@ -213,6 +213,9 @@ TEST(Vector2D, ArraySubscript)
 
 	efloat x = vec1[0];
 	efloat y = vec1[1];
+	
 	EXPECT_TRUE(x == 1 && y == 2);
 
 }
+
+

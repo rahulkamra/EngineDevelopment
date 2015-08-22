@@ -40,14 +40,14 @@ namespace math
 		};
 		
 
-		inline efloat dot(Vector2D* rhs)
+		inline efloat dot(const Vector2D& rhs) const
 		{
-			return this->x * rhs->x + this->y * rhs->y;
+			return this->x * rhs.x + this->y * rhs.y;
 		}
 
-		inline efloat length()
+		inline efloat length() const
 		{
-			return sqrt(dot(this));
+			return sqrt(dot(*this));
 		}
 
 
@@ -128,14 +128,14 @@ namespace math
 			return *this;
 		}
 
-		inline efloat& operator[](const int& index)
+		inline efloat operator[](const int& index) const
 		{
 			return data[index];
 		}
 
-		inline efloat distance(Vector2D* rhs)
+		inline efloat distance(const Vector2D& rhs) const
 		{
-			return sqrt(((rhs->x - this->x)*(rhs->x - this->x))-((rhs->x - this->x)*(rhs->x - this->x)));
+			return sqrt(((rhs.x - this->x)*(rhs.x - this->x))-((rhs.x - this->x)*(rhs.x - this->x)));
 		}
 	};
 
