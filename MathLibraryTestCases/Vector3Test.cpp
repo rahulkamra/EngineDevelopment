@@ -215,7 +215,7 @@ TEST(Vector3D, DivideScalar)
 
 	Vector3D result = vec1 / scaler;
 
-	EXPECT_TRUE(result.x ==  1 && result.y == 5 , result.z == 8);
+	EXPECT_TRUE(result.x ==  1 && result.y == 5 && result.z == 8);
 }
 
 TEST(Vector3D, IsEqual)

@@ -17,7 +17,7 @@ namespace math
 				Vector2D x, y;
 			};
 
-			Vector2D data[2];
+			Vector2D vectors[2];
 		};
 
 
@@ -40,25 +40,24 @@ namespace math
 
 		}
 
+
 		inline static Matrix2D createRotateMatrix(const f32 angle)
 		{
 			f32 cosTheta = cos(angle);
 			f32 sinTheta = sin(angle);
-			return Matrix2D();
-			//	return Matrix2D
-				//	(
-					//	cosTheta,-sinTheta,
-					//	sinTheta,cosTheta
-
-					//);
+			return Matrix2D
+				(
+					Vector2D{ cosTheta,-sinTheta },
+					Vector2D{ sinTheta,cosTheta }
+			);
 		}
 
 
 		//we need const as well as non cost operators.
-		inline const Vector2D& operator[](usize index) const { return data[index]; }
-		inline Vector2D& operator[](usize index){return data[index];}
+		inline const Vector2D& operator[](usize index) const { return vectors[index]; }
+		inline Vector2D& operator[](usize index) { return vectors[index]; }
 
-		
+
 		inline Matrix2D inverse()
 		{
 
