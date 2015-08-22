@@ -12,3 +12,6 @@ typedef unsigned short u16;
 typedef signed long long s64;
 typedef unsigned long long u64;
 
+typedef unsigned int usize;
+typedef signed int ssize;
+
