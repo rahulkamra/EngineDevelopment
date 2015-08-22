@@ -43,12 +43,6 @@ namespace math
 		};
 
 
-		inline f32 length() const
-		{
-			return sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
-		}
-
-
 		inline Vector3D& operator+=(const Vector3D& rhs)
 		{
 			this->x += rhs.x;
@@ -134,6 +128,11 @@ namespace math
 			return data[index];
 		}
 
+		inline f32 length() const
+		{
+			return sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
+		}
+
 	};
 
 	inline Vector3D operator+(const Vector3D& lhs, const Vector3D& rhs)
@@ -157,11 +156,22 @@ namespace math
 		return scaler * lhs;
 	}
 
+	inline Vector3D operator*(const Vector3D& lhs, Vector3D& rhs)
+	{
+		return Vector3D(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
+	}
+
 
 	inline Vector3D operator/(const Vector3D& lhs, f32 scaler)
 	{
 		return Vector3D(lhs.x / scaler, lhs.y / scaler, lhs.z / scaler);
 	}
+
+	inline Vector3D operator/(const Vector3D& lhs, Vector3D& rhs)
+	{
+		return Vector3D(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
+	}
+
 
 	inline bool operator==(const Vector3D& lhs, const Vector3D& rhs)
 	{
@@ -171,6 +181,17 @@ namespace math
 	inline bool operator!=(const Vector3D& lhs, const Vector3D& rhs)
 	{
 		return lhs.x != rhs.x || lhs.y != rhs.y || lhs.z != rhs.z;
+	}
+
+	inline f32 dot(const Vector3D& lhs, const Vector3D& rhs)
+	{
+		return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
+	}
+
+
+	inline Vector3D cross(const Vector3D& lhs, const Vector3D& rhs)
+	{
+		return Vector3D();
 	}
 
 	inline f32 distance(const Vector3D& from, const Vector3D& to)
@@ -183,15 +204,6 @@ namespace math
 	}
 
 
-	inline f32 dot(const Vector3D& lhs, const Vector3D& rhs)
-	{
-		return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
-	}
 
-
-	//inline f32 cross(const Vector3D& lhs, const Vector3D& rhs)
-	//{
-	//	return lhs.x * rhs.y - lhs.y * rhs.x;
-	//}
 
 }

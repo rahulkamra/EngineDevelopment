@@ -1,29 +1,9 @@
-﻿Build started 8/22/2015 11:17:48 AM.
+﻿Build started 8/22/2015 11:43:42 AM.
      1>Project "F:\Work\OpenGL\EngineDevelopment\trunk\MathLibraryTestCases\MathLibraryTestCases.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Matrix2dTest.cpp Vector2Test.cpp
-         Vector2Test.cpp
-         Generating Code...
-         Compiling...
-         Matrix2dTest.cpp
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrary\matrix2d.h(106): warning C4244: 'argument': conversion from 'f32' to 'int', possible loss of data
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrary\matrix2d.h(107): warning C4244: 'argument': conversion from 'f32' to 'int', possible loss of data
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(32): warning C4305: 'argument': truncation from 'double' to 'const f32'
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(33): warning C4305: 'argument': truncation from 'double' to 'float'
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(34): warning C4305: 'argument': truncation from 'double' to 'float'
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(35): warning C4305: 'argument': truncation from 'double' to 'float'
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(36): warning C4305: 'argument': truncation from 'double' to 'float'
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(39): warning C4305: 'argument': truncation from 'double' to 'const f32'
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(40): warning C4305: 'argument': truncation from 'double' to 'float'
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(41): warning C4305: 'argument': truncation from 'double' to 'float'
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(42): warning C4305: 'argument': truncation from 'double' to 'float'
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(43): warning C4305: 'argument': truncation from 'double' to 'float'
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(46): warning C4305: 'argument': truncation from 'double' to 'const f32'
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(47): warning C4305: 'argument': truncation from 'double' to 'float'
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(48): warning C4305: 'argument': truncation from 'double' to 'float'
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(49): warning C4305: 'argument': truncation from 'double' to 'float'
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\matrix2dtest.cpp(50): warning C4305: 'argument': truncation from 'double' to 'float'
-         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Vector3Test.cpp
+         Vector3Test.cpp
+     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\vector3test.cpp(209): warning C4002: too many actual parameters for macro 'EXPECT_TRUE'
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\Work\OpenGL\EngineDevelopment\trunk\Debug\MathLibraryTestCases.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"F:\Work\OpenGL\EngineDevelopment\trunk\Debug\MathLibraryTestCases.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\Work\OpenGL\EngineDevelopment\trunk\Debug\MathLibraryTestCases.lib" /MACHINE:X86 Debug\MainTest.obj
          Debug\Matrix2dTest.obj
@@ -34,4 +14,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.44
+Time Elapsed 00:00:01.13
