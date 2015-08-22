@@ -4,6 +4,20 @@
 
 using namespace math;
 
+TEST(Vector3D, Constructor)
+{
+	Vector3D vec1(1, 2,3);
+
+	f32 arrayInit[3] = { 1.0f, 2.0f , 3.0f };
+	Vector3D vec2{ arrayInit };
+
+	Vector3D vec3{ 1.0f,2.0f,3.0f };
+
+	EXPECT_TRUE(vec1.x == vec2.x &&  vec2.x == vec3.x 
+		     && vec1.y == vec2.y && vec2.y == vec3.y 
+			 && vec1.z == vec2.z && vec2.z == vec3.z);
+}
+
 TEST(Vector3D, Add)
 {
 	Vector3D vec1(2, 5, 6);
@@ -53,15 +67,15 @@ TEST(Vector3D, Divide)
 }
 
 
-//TEST(Vector3D, Dot)
-//{
-	//Vector3D vec1(1, 2, 5);
-	//Vector3D vec2(2, 1, 7);
-	//float result = vec1.dot(&vec2);
-	//float result1 = 1 * 2 + 2 * 1 + 5 * 7;
+TEST(Vector3D, Dot)
+{
+	Vector3D vec1(1, 2, 5);
+	Vector3D vec2(2, 1, 7);
+	float result = dot(vec1,vec2);
+	float result1 = 1 * 2 + 2 * 1 + 5 * 7;
 
-	//EXPECT_TRUE(result == result1);
-//}
+	EXPECT_TRUE(result == result1);
+}
 
 
 TEST(Vector3D, AssignmentOperator)

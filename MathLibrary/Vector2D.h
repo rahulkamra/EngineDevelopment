@@ -39,13 +39,6 @@ namespace math
 
 		};
 		
-
-		inline f32 length() const
-		{
-			return sqrt(this->x * this->x + this->y * this->y);
-		}
-
-
 		inline Vector2D& operator+=(const Vector2D& rhs)
 		{
 			this->x += rhs.x;
@@ -127,6 +120,12 @@ namespace math
 		{
 			return data[index];
 		}
+
+		inline f32 length() const
+		{
+			return sqrt(this->x * this->x + this->y * this->y);
+		}
+
 	};
 
 	inline Vector2D operator+(const Vector2D& lhs, const Vector2D& rhs)
@@ -150,11 +149,21 @@ namespace math
 		return scaler * lhs;
 	}
 
+	inline Vector2D operator*(const Vector2D& lhs, Vector2D& rhs)
+	{
+		return Vector2D(lhs.x * rhs.x, lhs.y * rhs.y);
+	}
 
 	inline Vector2D operator/(const Vector2D& lhs, f32 scaler)
 	{
 		return Vector2D(lhs.x / scaler, lhs.y / scaler);
 	}
+
+	inline Vector2D operator/(const Vector2D& lhs, Vector2D& rhs)
+	{
+		return Vector2D(lhs.x / rhs.x, lhs.y / rhs.y);
+	}
+
 
 	inline bool operator==(const Vector2D& lhs, const Vector2D& rhs)
 	{

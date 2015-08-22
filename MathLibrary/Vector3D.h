@@ -134,10 +134,6 @@ namespace math
 			return data[index];
 		}
 
-		//inline f32 distance(const Vector3D& rhs) const
-		//{
-		//	return sqrt((rhs.x - this->x)*(rhs.x - this->x) - ((rhs.x - this->x)*(rhs.x - this->x)));
-		//}
 	};
 
 	inline Vector3D operator+(const Vector3D& lhs, const Vector3D& rhs)
@@ -177,10 +173,20 @@ namespace math
 		return lhs.x != rhs.x || lhs.y != rhs.y || lhs.z != rhs.z;
 	}
 
-	//inline f32 dot(const Vector3D& lhs, const Vector3D& rhs)
-	//{
-	//	return lhs.x * rhs.x + lhs.y * rhs.y;
-	//}
+	inline f32 distance(const Vector3D& from, const Vector3D& to)
+	{
+		return sqrt(
+			(to.x - from.x)*(to.x - from.x)
+		  + (to.y - from.y)*(to.y - from.y)
+		  + (to.z - from.z)*(to.z - from.z)
+			);
+	}
+
+
+	inline f32 dot(const Vector3D& lhs, const Vector3D& rhs)
+	{
+		return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
+	}
 
 
 	//inline f32 cross(const Vector3D& lhs, const Vector3D& rhs)
