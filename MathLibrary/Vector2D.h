@@ -2,6 +2,7 @@
 
 #include <MathDefine.h>
 #include <Types.h>
+#include <MathUtils.h>
  
 namespace math
 {
@@ -39,61 +40,6 @@ namespace math
 
 		};
 		
-		inline Vector2D& operator+=(const Vector2D& rhs)
-		{
-			this->x += rhs.x;
-			this->y += rhs.y;
-			return *this;
-		}
-
-		inline Vector2D& operator+=(f32 scaler)
-		{
-			this->x += scaler;
-			this->y += scaler;
-			return *this;
-		}
-
-		inline Vector2D& operator-=(const Vector2D& rhs)
-		{
-			this->x -= rhs.x;
-			this->y -= rhs.y;
-			return *this;
-		}
-
-		inline Vector2D& operator-=(f32 scaler)
-		{
-			this->x -= scaler;
-			this->y -= scaler;
-			return *this;
-		}
-
-		inline Vector2D& operator*=(const Vector2D& rhs)
-		{
-			this->x *= rhs.x;
-			this->y *= rhs.y;
-			return *this;
-		}
-
-		inline Vector2D& operator*=(f32 scaler)
-		{
-			this->x *= scaler;
-			this->y *= scaler;
-			return *this;
-		}
-
-		inline Vector2D& operator/=(const Vector2D& rhs)
-		{
-			this->x /= rhs.x;
-			this->y /= rhs.y;
-			return *this;
-		}
-
-		inline Vector2D& operator/=(f32 scaler)
-		{
-			this->x /= scaler;
-			this->y /= scaler;
-			return *this;
-		}
 
 		Vector2D(const Vector2D& source)
 		{
@@ -126,7 +72,70 @@ namespace math
 			return sqrt(this->x * this->x + this->y * this->y);
 		}
 
+		inline void normalize()
+		{
+			const f32 length = this->length();
+			this->x /= length;
+			this->y /= length;
+		}
+
 	};
+
+	inline Vector2D& operator+=(Vector2D& lhs, const Vector2D& rhs)
+	{
+		lhs.x += rhs.x;
+		lhs.y += rhs.y;
+		return lhs;
+	}
+
+	inline Vector2D& operator+=(Vector2D& lhs, f32 scaler)
+	{
+		lhs.x += scaler;
+		lhs.y += scaler;
+		return lhs;
+	}
+
+	inline Vector2D& operator-=(Vector2D& lhs, const Vector2D& rhs)
+	{
+		lhs.x -= rhs.x;
+		lhs.y -= rhs.y;
+		return lhs;
+	}
+
+	inline Vector2D& operator-=(Vector2D& lhs, f32 scaler)
+	{
+		lhs.x -= scaler;
+		lhs.y -= scaler;
+		return lhs;
+	}
+
+	inline Vector2D& operator*=(Vector2D& lhs, const Vector2D& rhs)
+	{
+		lhs.x *= rhs.x;
+		lhs.y *= rhs.y;
+		return lhs;
+	}
+
+	inline Vector2D& operator*=(Vector2D& lhs, f32 scaler)
+	{
+		lhs.x *= scaler;
+		lhs.y *= scaler;
+		return lhs;
+	}
+
+	inline Vector2D& operator/=(Vector2D& lhs, const Vector2D& rhs)
+	{
+		lhs.x /= rhs.x;
+		lhs.y /= rhs.y;
+		return lhs;
+	}
+
+	inline Vector2D& operator/=(Vector2D& lhs, f32 scaler)
+	{
+		lhs.x /= scaler;
+		lhs.y /= scaler;
+		return lhs;
+	}
 
 	inline Vector2D operator+(const Vector2D& lhs, const Vector2D& rhs)
 	{
@@ -198,6 +207,23 @@ namespace math
 			(to.x - from.x)*(to.x - from.x)
 			+ (to.y - from.y)*(to.y - from.y)
 			);
+	}
+
+	inline Vector2D normalize(Vector2D& source)
+	{
+		return Vector2D(source) / source.length();
+	}
+
+	//Formula r = 2(d?n)n-d
+	inline Vector2D reflect(Vector2D& source, Vector2D& normal)
+	{
+		return (2 * normal * dot(source, normal)) - source;
+	}
+
+	//Forumula a.b/|a|*|b|
+	inline f32 angle(Vector2D& lhs, Vector2D& rhs)
+	{
+		return MathUtils::acos(dot(lhs, rhs) / (lhs.length()*rhs.length()));
 	}
 
 }

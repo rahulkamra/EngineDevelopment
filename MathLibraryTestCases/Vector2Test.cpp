@@ -279,5 +279,39 @@ TEST(Vector2D, Distance)
 }
 
 
+TEST(Vector2D, NormalizeSelf)
+{
+	Vector2D vec1(3, 4);
+	vec1.normalize();
+
+	EXPECT_TRUE(vec1.x == 0.6f && vec1.y == 0.8f);
+}
+
+
+TEST(Vector2D, ReturnNormalize)
+{
+	Vector2D vec1(3, 4);
+	Vector2D vec2 = normalize(vec1);
+
+	EXPECT_TRUE(vec2.x == 0.6f && vec2.y == 0.8f);
+}
+
+TEST(Vector2D, Reflect)
+{
+	Vector2D vec1(3, 4);
+	Vector2D vec2(0, 1);
+	Vector2D vec3 = reflect(vec1, vec2);
+	
+	EXPECT_TRUE(vec3.x == -3.0f && vec3.y == 4.0f);
+}
+
+TEST(Vector2D, AngleBetween)
+{
+	Vector2D vec1(2, 3);
+	Vector2D vec2(3, 4);
+	f32 result = angle(vec1, vec2);
+
+	EXPECT_TRUE(TestUtils::almostEqual(result, 0.05549850524f));
+}
 
 
