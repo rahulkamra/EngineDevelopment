@@ -176,6 +176,12 @@ namespace math
 		return lhs.x * rhs.x + lhs.y * rhs.y;
 	}
 
+
+	inline f32 cross(const Vector2D& lhs, const Vector2D& rhs)
+	{
+		return lhs.x * rhs.y - lhs.y * rhs.x;
+	}
+
 }
 
 

@@ -74,6 +74,15 @@ TEST(Vector2D, Dot)
 	EXPECT_TRUE(result == result1);
 }
 
+TEST(Vector2D, Cross)
+{
+	Vector2D vec1(1, 2);
+	Vector2D vec2(2, 1);
+	float result = cross(vec1, vec2);
+	float result1 = 1 * 1 - 2 * 2;
+
+	EXPECT_TRUE(result == result1);
+}
 
 
 TEST(Vector2D, AssignmentOperator)
