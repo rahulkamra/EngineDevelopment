@@ -8,7 +8,8 @@ using namespace math;
 
 TEST(Matrix2D, Constrctor)
 {
-	//Matrix2D matrix = {Vector2D}
+	Matrix2D matrix{ Vector2D{1,2} , Vector2D{ 3,4 } };
+	EXPECT_TRUE((matrix.x == Vector2D{ 1,2 }) && (matrix.y == Vector2D{ 3 , 4 }));
 }
 
 TEST(Matrix2D, CreateMatrixFromRotation)
@@ -58,19 +59,32 @@ TEST(Matrix2D, ArraySubscript)
 }
 
 
-TEST(Matrix2D, SetColumn)
+TEST(Matrix2D, Assignment)
 {
-	//Matrix2D matrix(10, 3,
-				  //  40, 1);
+	Matrix2D matrix{ Vector2D{ 1,2 } , Vector2D{ 3,4 } };
+	Matrix2D matrix2 = matrix;
 
-	//matrix.setColumn(0, Vector2D(12,13));
+	EXPECT_TRUE(matrix == matrix2);
 
-	//EXPECT_TRUE(matrix.a == 12 && matrix.c == 13);
-	//matrix.setRow(0, Vector2D(19, 13));
-
-	//EXPECT_TRUE(matrix.a == 19 && matrix.b == 13);
-
+	EXPECT_TRUE(matrix.x == matrix2.x);
+	EXPECT_TRUE(matrix.y == matrix2.y);
 }
+
+TEST(Matrix2D, Equal)
+{
+	Matrix2D matrix{ Vector2D{ 2,2 } , Vector2D{ 3,4 } };
+	Matrix2D matrix2{ Vector2D{ 2,2 } , Vector2D{ 3,4 } };
+	EXPECT_TRUE(matrix == matrix2);
+}
+
+TEST(Matrix2D, NotEqual)
+{
+	Matrix2D matrix{ Vector2D{ 1,2 } , Vector2D{ 3,4 } };
+	Matrix2D matrix2{ Vector2D{ 2,2 } , Vector2D{ 3,4 } };
+
+	EXPECT_TRUE(matrix != matrix2);
+}
+
 
 
 TEST(Matrix2D, MultiplyWithVector)
