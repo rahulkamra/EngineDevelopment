@@ -53,7 +53,7 @@ TEST(Vector3D, AssignmentMinusEqualVector)
 TEST(Vector3D, AssignmentMinusEqualScalar)
 {
 	Vector3D vec1(3, 4,5);
-	float scaler = 2.0f;
+	f32 scaler = 2.0f;
 
 	vec1 -= scaler;
 

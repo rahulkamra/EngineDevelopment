@@ -32,7 +32,7 @@ TEST(Vector2D, AssignmentPlusEqual)
 TEST(Vector2D, AssignmentPlusEqualScalar)
 {
 	Vector2D vec1(1, 2);
-	float scaler = 2.0f;
+	f32 scaler = 2.0f;
 
 	vec1 += scaler;
 
@@ -53,7 +53,7 @@ TEST(Vector2D, AssignmentMinusEqualVector)
 TEST(Vector2D, AssignmentMinusEqualScalar)
 {
 	Vector2D vec1(3, 4);
-	float scaler = 2.0f;
+	f32 scaler = 2.0f;
 
 	vec1 -= scaler;
 
@@ -74,7 +74,7 @@ TEST(Vector2D, AssignmentMultiplyEqualVector)
 TEST(Vector2D, AssignmentMultiplyEqualScalar)
 {
 	Vector2D vec1(3, 4);
-	float scaler = 2.0f;
+	f32 scaler = 2.0f;
 
 	vec1 *= scaler;
 
@@ -95,7 +95,7 @@ TEST(Vector2D, AssignmentDivideEqualVector)
 TEST(Vector2D, AssignmentDivideEqualScalar)
 {
 	Vector2D vec1(4, 6);
-	float scaler = 2.0f;
+	f32 scaler = 2.0f;
 
 	vec1 /= scaler;
 
@@ -189,7 +189,7 @@ TEST(Vector2D, Multiply)
 TEST(Vector2D, MultiplyScalar)
 {
 	Vector2D vec1(2, 5);
-	float scaler = 2.0f;
+	f32 scaler = 2.0f;
 
 	Vector2D result(vec1.x * scaler, vec1.y *scaler);
 	Vector2D result1 = vec1 * scaler;
@@ -213,7 +213,7 @@ TEST(Vector2D, Divide)
 TEST(Vector2D, DivideScalar)
 {
 	Vector2D vec1(2, 5);
-	float scaler = 2.0f;
+	f32 scaler = 2.0f;
 
 	Vector2D result(vec1.x / scaler, vec1.y / scaler);
 	Vector2D result1 = vec1 / scaler;
@@ -242,8 +242,8 @@ TEST(Vector2D, Dot)
 {
 	Vector2D vec1(1, 2);
 	Vector2D vec2(2, 1);
-	float result = dot(vec1,vec2);
-	float result1 = 1 * 2 + 2 * 1;
+	f32 result = dot(vec1,vec2);
+	f32 result1 = 1 * 2 + 2 * 1;
 	
 	EXPECT_TRUE(result == result1);
 }
@@ -252,8 +252,8 @@ TEST(Vector2D, Cross)
 {
 	Vector2D vec1(1, 2);
 	Vector2D vec2(2, 1);
-	float result = cross(vec1, vec2);
-	float result1 = 1 * 1 - 2 * 2;
+	f32 result = cross(vec1, vec2);
+	f32 result1 = 1 * 1 - 2 * 2;
 
 	EXPECT_TRUE(result == result1);
 }
