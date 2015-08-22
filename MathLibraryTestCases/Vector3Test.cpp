@@ -53,15 +53,15 @@ TEST(Vector3D, Divide)
 }
 
 
-TEST(Vector3D, Dot)
-{
-	Vector3D vec1(1, 2, 5);
-	Vector3D vec2(2, 1, 7);
-	float result = vec1.dot(&vec2);
-	float result1 = 1 * 2 + 2 * 1 + 5 * 7;
+//TEST(Vector3D, Dot)
+//{
+	//Vector3D vec1(1, 2, 5);
+	//Vector3D vec2(2, 1, 7);
+	//float result = vec1.dot(&vec2);
+	//float result1 = 1 * 2 + 2 * 1 + 5 * 7;
 
-	EXPECT_TRUE(result == result1);
-}
+	//EXPECT_TRUE(result == result1);
+//}
 
 
 TEST(Vector3D, AssignmentOperator)

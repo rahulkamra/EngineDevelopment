@@ -127,11 +127,6 @@ namespace math
 		{
 			return data[index];
 		}
-
-		inline f32 distance(const Vector2D& rhs) const
-		{
-			return sqrt(((rhs.x - this->x)*(rhs.x - this->x))-((rhs.x - this->x)*(rhs.x - this->x)));
-		}
 	};
 
 	inline Vector2D operator+(const Vector2D& lhs, const Vector2D& rhs)
@@ -180,6 +175,15 @@ namespace math
 	inline f32 cross(const Vector2D& lhs, const Vector2D& rhs)
 	{
 		return lhs.x * rhs.y - lhs.y * rhs.x;
+	}
+
+
+	inline f32 distance(const Vector2D& from , const Vector2D& to)
+	{
+		return sqrt(
+			(to.x - from.x)*(to.x - from.x)
+			+ (to.y - from.y)*(to.y - from.y)
+			);
 	}
 
 }

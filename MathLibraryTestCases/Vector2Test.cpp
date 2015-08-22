@@ -1,6 +1,7 @@
 #pragma once
 #include <gtest\gtest.h>
 #include <Vector2D.h>
+#include "TestUtils.h"
 
 using namespace math;
 
@@ -215,6 +216,17 @@ TEST(Vector2D, Length)
 	
 	EXPECT_TRUE(vec1.length() == sqrt(5.00f));
 }
+
+TEST(Vector2D, Distance)
+{
+	Vector2D from(-7, -4);
+	Vector2D to(17, 6.5);
+
+	f32 dist = distance(from, to);
+
+	EXPECT_TRUE(TestUtils::almostEqual(dist, 26.1964f));
+}
+
 
 TEST(Vector2D, ArraySubscript)
 {
