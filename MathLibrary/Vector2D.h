@@ -40,14 +40,9 @@ namespace math
 		};
 		
 
-		inline f32 dot(const Vector2D& rhs) const
-		{
-			return this->x * rhs.x + this->y * rhs.y;
-		}
-
 		inline f32 length() const
 		{
-			return sqrt(dot(*this));
+			return sqrt(this->x * this->x + this->y * this->y);
 		}
 
 
@@ -174,6 +169,11 @@ namespace math
 	inline bool operator!=(const Vector2D& lhs, const Vector2D& rhs)
 	{
 		return lhs.x != rhs.x || lhs.y != rhs.y;
+	}
+
+	inline f32 dot(const Vector2D& lhs , const Vector2D& rhs)
+	{
+		return lhs.x * rhs.x + lhs.y * rhs.y;
 	}
 
 }
