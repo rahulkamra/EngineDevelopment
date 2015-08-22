@@ -140,11 +140,16 @@ namespace math
 		return Vector3D(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
 	}
 
+
 	inline Vector3D operator-(const Vector3D& lhs, const Vector3D& rhs)
 	{
 		return Vector3D(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
 	}
 
+	inline Vector3D operator-(const Vector3D& rhs)
+	{
+		return Vector3D(-rhs.x, -rhs.y, -rhs.z);
+	}
 
 	inline Vector3D operator*(f32 scaler, const Vector3D& rhs)
 	{
@@ -191,7 +196,12 @@ namespace math
 
 	inline Vector3D cross(const Vector3D& lhs, const Vector3D& rhs)
 	{
-		return Vector3D();
+		return Vector3D
+			(
+				lhs.y *  rhs.z - lhs.z * rhs.y ,
+				lhs.z * rhs.x - lhs.x * rhs.z , 
+				lhs.x * rhs.y - lhs.y * rhs.x
+			);
 	}
 
 	inline f32 distance(const Vector3D& from, const Vector3D& to)

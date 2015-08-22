@@ -173,6 +173,14 @@ TEST(Vector2D, Subtract)
 	EXPECT_TRUE(result.x == result1.x && result.y == result1.y);
 }
 
+TEST(Vector2D, Negate)
+{
+	Vector2D vec1(2, 5);
+	Vector2D result = -vec1;
+
+	EXPECT_TRUE(result.x == -2 && result.y == -5);
+}
+
 
 TEST(Vector2D, Multiply)
 {

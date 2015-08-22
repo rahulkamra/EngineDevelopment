@@ -138,6 +138,11 @@ namespace math
 		return Vector2D(lhs.x - rhs.x, lhs.y - rhs.y);
 	}
 
+	inline Vector2D operator-(const Vector2D& rhs)
+	{
+		return Vector2D(- rhs.x, - rhs.y);
+	}
+
 
 	inline Vector2D operator*(f32 scaler, const Vector2D& rhs)
 	{

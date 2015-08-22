@@ -1,11 +1,9 @@
-﻿Build started 8/22/2015 11:45:43 AM.
+﻿Build started 8/22/2015 1:43:06 PM.
      1>Project "F:\Work\OpenGL\EngineDevelopment\trunk\MathLibraryTestCases\MathLibraryTestCases.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Vector2Test.cpp Vector3Test.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Vector3Test.cpp
          Vector3Test.cpp
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\vector3test.cpp(209): warning C4002: too many actual parameters for macro 'EXPECT_TRUE'
-         Vector2Test.cpp
-         Generating Code...
+     1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\vector3test.cpp(218): warning C4002: too many actual parameters for macro 'EXPECT_TRUE'
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\Work\OpenGL\EngineDevelopment\trunk\Debug\MathLibraryTestCases.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"F:\Work\OpenGL\EngineDevelopment\trunk\Debug\MathLibraryTestCases.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\Work\OpenGL\EngineDevelopment\trunk\Debug\MathLibraryTestCases.lib" /MACHINE:X86 Debug\MainTest.obj
          Debug\Matrix2dTest.obj
@@ -16,4 +14,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.99
+Time Elapsed 00:00:01.15

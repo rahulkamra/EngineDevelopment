@@ -165,6 +165,15 @@ TEST(Vector3D, Subtract)
 	EXPECT_TRUE(result.x == -1 && result.y == 4 && result.z == -2);
 }
 
+TEST(Vector3D, Negate)
+{
+	Vector3D vec1(2, 10, 9);
+	
+	Vector3D result = -vec1;
+
+	EXPECT_TRUE(result.x == -2 && result.y == -10 && result.z == -9);
+}
+
 
 TEST(Vector3D, Multiply)
 {
@@ -239,12 +248,21 @@ TEST(Vector3D, Dot)
 
 TEST(Vector3D, Cross)
 {
-	Vector3D vec1(1, 2 , 3);
-	Vector3D vec2(3,2, 1);
-	//float result = cross(vec1, vec2);
-	//float result1 = 1 * 1 - 2 * 2;
+	Vector3D vec1(1, -7 , 1);
+	Vector3D vec2(5 , 2 , 4);
 
-	//EXPECT_TRUE(result == result1);
+	Vector3D result = cross(vec1, vec2);
+	Vector3D reverseCross = cross(vec2, vec1);
+
+	EXPECT_TRUE(result == Vector3D(-30, 1 , 37 ));
+	EXPECT_TRUE(result == -reverseCross);
+
+	EXPECT_TRUE(dot(result,vec1) == 0);
+	EXPECT_TRUE(dot(reverseCross, vec1) == 0);
+
+	EXPECT_TRUE(dot(result, vec2) == 0);
+	EXPECT_TRUE(dot(reverseCross, vec2) == 0);
+
 }
 
 
