@@ -64,6 +64,11 @@ namespace math
 			return data[index];
 		}
 
+		inline f32& operator[](const int& index)
+		{
+			return data[index];
+		}
+
 		inline f32 length() const
 		{
 			return sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
