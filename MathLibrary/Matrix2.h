@@ -6,7 +6,7 @@
 
 namespace math
 {
-	struct Matrix2D
+	struct Matrix2
 	{
 
 		union
@@ -20,19 +20,19 @@ namespace math
 		};
 
 
-		Matrix2D(const Matrix2D& rhs)
+		Matrix2(const Matrix2& rhs)
 		{
 			this->x = rhs.x;
 			this->y = rhs.y;
 		}
 
-		explicit Matrix2D() :
+		explicit Matrix2() :
 			x(1, 0),
 			y(0, 1)
 		{
 		}
 
-		explicit Matrix2D(const Vector2D& v1, const Vector2D& v2) :
+		explicit Matrix2(const Vector2D& v1, const Vector2D& v2) :
 			x(v1),
 			y(v2)
 		{
@@ -40,11 +40,11 @@ namespace math
 		}
 
 
-		inline static Matrix2D createRotateMatrix(const f32 angle)
+		inline static Matrix2 createRotateMatrix(const f32 angle)
 		{
 			f32 cosTheta = cos(angle);
 			f32 sinTheta = sin(angle);
-			return Matrix2D
+			return Matrix2
 				(
 					Vector2D{ cosTheta,-sinTheta },
 					Vector2D{ sinTheta,cosTheta }
@@ -56,7 +56,7 @@ namespace math
 		inline const Vector2D& operator[](usize index) const { return vectors[index]; }
 		inline Vector2D& operator[](usize index) { return vectors[index]; }
 
-		inline Matrix2D& operator=(const Matrix2D& rhs)
+		inline Matrix2& operator=(const Matrix2& rhs)
 		{
 			for (usize row = 0; row < 2; row++)
 			{
@@ -70,9 +70,9 @@ namespace math
 	};
 
 
-	inline Matrix2D operator+(const Matrix2D& lhs, const Matrix2D& rhs)
+	inline Matrix2 operator+(const Matrix2& lhs, const Matrix2& rhs)
 	{
-		Matrix2D ret;
+		Matrix2 ret;
 		for (usize row = 0; row < 2; row++)
 		{
 			ret[row] = lhs[row] + rhs[row];
@@ -82,7 +82,7 @@ namespace math
 	}
 
 
-	inline Matrix2D& operator+=(Matrix2D& lhs, const Matrix2D& rhs)
+	inline Matrix2& operator+=(Matrix2& lhs, const Matrix2& rhs)
 	{
 		for (usize row = 0; row < 2; row++)
 		{
@@ -91,9 +91,9 @@ namespace math
 		return lhs;
 	}
 
-	inline Matrix2D operator-(const Matrix2D& lhs, const Matrix2D& rhs)
+	inline Matrix2 operator-(const Matrix2& lhs, const Matrix2& rhs)
 	{
-		Matrix2D ret;
+		Matrix2 ret;
 		for (usize row = 0; row < 2; row++)
 		{
 			ret[row] = lhs[row] - rhs[row];
@@ -101,7 +101,7 @@ namespace math
 		return ret;
 	}
 
-	inline Matrix2D& operator-=(Matrix2D& lhs, const Matrix2D& rhs)
+	inline Matrix2& operator-=(Matrix2& lhs, const Matrix2& rhs)
 	{
 		for (usize row = 0; row < 2; row++)
 		{
@@ -110,9 +110,9 @@ namespace math
 		return lhs;
 	}
 
-	inline Matrix2D operator*(const Matrix2D& lhs, const f32& rhs)
+	inline Matrix2 operator*(const Matrix2& lhs, const f32& rhs)
 	{
-		Matrix2D ret;
+		Matrix2 ret;
 		for (usize row = 0; row < 2; row++)
 		{
 			ret[row] = lhs[row] * rhs;
@@ -121,9 +121,9 @@ namespace math
 		return ret;
 	}
 
-	inline Matrix2D operator*(const Matrix2D& lhs, const Matrix2D& rhs)
+	inline Matrix2 operator*(const Matrix2& lhs, const Matrix2& rhs)
 	{
-		Matrix2D result;
+		Matrix2 result;
 
 		result[0][0] = rhs[0][0] * lhs[0][0] + rhs[0][1] * lhs[1][0];
 		result[0][1] = rhs[0][0] * lhs[0][1] + rhs[0][1] * lhs[1][1];
@@ -135,14 +135,14 @@ namespace math
 	}
 
 
-	inline Vector2D const operator*(const Matrix2D& lhs, const Vector2D& rhs)
+	inline Vector2D const operator*(const Matrix2& lhs, const Vector2D& rhs)
 	{
 		return lhs[0] * rhs.x + lhs[1] * rhs.y;
 	}
 
-	inline Matrix2D operator/(const Matrix2D& lhs, const f32& rhs)
+	inline Matrix2 operator/(const Matrix2& lhs, const f32& rhs)
 	{
-		Matrix2D ret;
+		Matrix2 ret;
 		for (usize row = 0; row < 2; row++)
 		{
 			ret[row] = lhs[row] / rhs;
@@ -151,9 +151,9 @@ namespace math
 		return ret;
 	}
 
-	inline Matrix2D& operator/=(Matrix2D& lhs, const f32& rhs)
+	inline Matrix2& operator/=(Matrix2& lhs, const f32& rhs)
 	{
-		Matrix2D ret;
+		Matrix2 ret;
 		for (usize row = 0; row < 2; row++)
 		{
 			lhs[row] /= rhs;
@@ -162,7 +162,7 @@ namespace math
 		return ret;
 	}
 
-	inline bool operator==(const Matrix2D& lhs, const Matrix2D& rhs)
+	inline bool operator==(const Matrix2& lhs, const Matrix2& rhs)
 	{
 		for (usize i = 0; i < 2; i++)
 		{
@@ -175,7 +175,7 @@ namespace math
 	}
 
 
-	inline bool operator!=(const Matrix2D& lhs, const Matrix2D& rhs)
+	inline bool operator!=(const Matrix2& lhs, const Matrix2& rhs)
 	{
 		for (usize i = 0; i < 2; i++)
 		{
@@ -188,9 +188,9 @@ namespace math
 	}
 
 
-	inline Matrix2D transpose(const Matrix2D& source)
+	inline Matrix2 transpose(const Matrix2& source)
 	{
-		Matrix2D result;
+		Matrix2 result;
 		for (usize i = 0; i < 2; i++)
 		{
 			for (usize j = 0; j < 2; j++)
@@ -198,14 +198,14 @@ namespace math
 		}
 	}
 
-	inline f32 determinant(const Matrix2D& source)
+	inline f32 determinant(const Matrix2& source)
 	{
 		return source[0][0] * source[1][1] - source[1][0] * source[0][1];
 	}
 
-	inline Matrix2D inverse(const Matrix2D& source)
+	inline Matrix2 inverse(const Matrix2& source)
 	{
-		Matrix2D result;
+		Matrix2 result;
 		result[0][0] = source[1][1];
 		result[1][1] = source[0][0];
 
