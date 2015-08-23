@@ -1,6 +1,6 @@
 #pragma once
 #include <MathDefine.h>
-#include <Vector2D.h>
+#include <Vector2.h>
 #include <math.h>
 #include <array>
 
@@ -13,10 +13,10 @@ namespace math
 		{
 			struct
 			{
-				Vector2D x, y;
+				Vector2 x, y;
 			};
 
-			Vector2D vectors[2];
+			Vector2 vectors[2];
 		};
 
 
@@ -32,7 +32,7 @@ namespace math
 		{
 		}
 
-		explicit Matrix2(const Vector2D& v1, const Vector2D& v2) :
+		explicit Matrix2(const Vector2& v1, const Vector2& v2) :
 			x(v1),
 			y(v2)
 		{
@@ -46,15 +46,15 @@ namespace math
 			f32 sinTheta = sin(angle);
 			return Matrix2
 				(
-					Vector2D{ cosTheta,-sinTheta },
-					Vector2D{ sinTheta,cosTheta }
+					Vector2{ cosTheta,-sinTheta },
+					Vector2{ sinTheta,cosTheta }
 			);
 		}
 
 
 		//we need const as well as non cost operators.
-		inline const Vector2D& operator[](usize index) const { return vectors[index]; }
-		inline Vector2D& operator[](usize index) { return vectors[index]; }
+		inline const Vector2& operator[](usize index) const { return vectors[index]; }
+		inline Vector2& operator[](usize index) { return vectors[index]; }
 
 		inline Matrix2& operator=(const Matrix2& rhs)
 		{
@@ -135,7 +135,7 @@ namespace math
 	}
 
 
-	inline Vector2D const operator*(const Matrix2& lhs, const Vector2D& rhs)
+	inline Vector2 const operator*(const Matrix2& lhs, const Vector2& rhs)
 	{
 		return lhs[0] * rhs.x + lhs[1] * rhs.y;
 	}

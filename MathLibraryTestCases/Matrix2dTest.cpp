@@ -1,15 +1,15 @@
 #pragma once
 #include <gtest\gtest.h>
 #include <Matrix2.h>
-#include <Vector2D.h>
+#include <Vector2.h>
 #include "TestUtils.h"
 
 using namespace math;
 
 TEST(Matrix2, Constrctor)
 {
-	Matrix2 matrix{ Vector2D{1,2} , Vector2D{ 3,4 } };
-	EXPECT_TRUE((matrix.x == Vector2D{ 1,2 }) && (matrix.y == Vector2D{ 3 , 4 }));
+	Matrix2 matrix{ Vector2{1,2} , Vector2{ 3,4 } };
+	EXPECT_TRUE((matrix.x == Vector2{ 1,2 }) && (matrix.y == Vector2{ 3 , 4 }));
 }
 
 TEST(Matrix2, CreateMatrixFromRotation)
@@ -46,13 +46,13 @@ TEST(Matrix2, CreateMatrixFromRotation)
 
 TEST(Matrix2, ArraySubscript)
 {
-	Vector2D a1 = Vector2D(1, 2);
-	Vector2D a2 = Vector2D(3, 1);
+	Vector2 a1 = Vector2(1, 2);
+	Vector2 a2 = Vector2(3, 1);
 
 	Matrix2 matrix( a1 , a2 );
 
-	Vector2D v1 = matrix[0];
-	Vector2D v2 = matrix[1];
+	Vector2 v1 = matrix[0];
+	Vector2 v2 = matrix[1];
 
 	EXPECT_TRUE(a1 == v1 && a2 == v2);
 
@@ -61,7 +61,7 @@ TEST(Matrix2, ArraySubscript)
 
 TEST(Matrix2, Assignment)
 {
-	Matrix2 matrix{ Vector2D{ 1,2 } , Vector2D{ 3,4 } };
+	Matrix2 matrix{ Vector2{ 1,2 } , Vector2{ 3,4 } };
 	Matrix2 matrix2 = matrix;
 
 	EXPECT_TRUE(matrix == matrix2);
@@ -72,26 +72,26 @@ TEST(Matrix2, Assignment)
 
 TEST(Matrix2, Equal)
 {
-	Matrix2 matrix{ Vector2D{ 2,2 } , Vector2D{ 3,4 } };
-	Matrix2 matrix2{ Vector2D{ 2,2 } , Vector2D{ 3,4 } };
+	Matrix2 matrix{ Vector2{ 2,2 } , Vector2{ 3,4 } };
+	Matrix2 matrix2{ Vector2{ 2,2 } , Vector2{ 3,4 } };
 	EXPECT_TRUE(matrix == matrix2);
 }
 
 TEST(Matrix2, NotEqual)
 {
-	Matrix2 matrix{ Vector2D{ 1,2 } , Vector2D{ 3,4 } };
-	Matrix2 matrix2{ Vector2D{ 2,2 } , Vector2D{ 3,4 } };
+	Matrix2 matrix{ Vector2{ 1,2 } , Vector2{ 3,4 } };
+	Matrix2 matrix2{ Vector2{ 2,2 } , Vector2{ 3,4 } };
 
 	EXPECT_TRUE(matrix != matrix2);
 }
 
 TEST(Matrix2, CrossProduct)
 {
-	Matrix2 matrix1(Vector2D{ 1 , 3 }, Vector2D{ 2 , 4 });
-	Matrix2 matrix2(Vector2D{ 5 , 7 }, Vector2D{ 6 , 8 });
+	Matrix2 matrix1(Vector2{ 1 , 3 }, Vector2{ 2 , 4 });
+	Matrix2 matrix2(Vector2{ 5 , 7 }, Vector2{ 6 , 8 });
 
 	Matrix2 matrix3 = matrix1 * matrix2;
-	Matrix2 matrix4(Vector2D{ 19 , 43 }, Vector2D{ 22 , 50});
+	Matrix2 matrix4(Vector2{ 19 , 43 }, Vector2{ 22 , 50});
 
 	EXPECT_TRUE(matrix3 == matrix4);
 }
@@ -99,22 +99,22 @@ TEST(Matrix2, CrossProduct)
 
 TEST(Matrix2, MultiplyWithVector)
 {
-	Matrix2 matrix(Vector2D{ 2 , 4 }, Vector2D{ -3 , 5 });
-	Vector2D vec2(3, 9);
-	Vector2D result = matrix * vec2;
+	Matrix2 matrix(Vector2{ 2 , 4 }, Vector2{ -3 , 5 });
+	Vector2 vec2(3, 9);
+	Vector2 result = matrix * vec2;
 	EXPECT_TRUE(result.x == -21 && result.y == 57);
 }
 
 
 TEST(Matrix2, Determinant)
 {
-	Matrix2 matrix(Vector2D{ 5 , -1 }, Vector2D{ 3 , 4 });
+	Matrix2 matrix(Vector2{ 5 , -1 }, Vector2{ 3 , 4 });
 	EXPECT_TRUE(determinant(matrix) == 23);
 }
 
 TEST(Matrix2, Inverse)
 {
-	Matrix2 matrix(Vector2D{ 3 , -7 }, Vector2D{ 5 , 2 });
+	Matrix2 matrix(Vector2{ 3 , -7 }, Vector2{ 5 , 2 });
 	Matrix2 inverseMatrix = inverse(matrix);
 
 	EXPECT_TRUE(TestUtils::almostEqual(inverseMatrix[0][0],  2/41.0f));
@@ -126,7 +126,7 @@ TEST(Matrix2, Inverse)
 
 
 	//M*M(Inv) = Identity
-	Matrix2 matrix2(Vector2D{ 3 , -7 }, Vector2D{ 5 , 2 });
+	Matrix2 matrix2(Vector2{ 3 , -7 }, Vector2{ 5 , 2 });
 	Matrix2 tempInverse = inverse(matrix2);
 
 	Matrix2  productMatrix = matrix2 * tempInverse;

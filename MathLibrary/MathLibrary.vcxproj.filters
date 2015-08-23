@@ -18,12 +18,6 @@
     <ClInclude Include="MathDefine.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2D.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3D.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Types.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -34,6 +28,12 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Matrix2.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
