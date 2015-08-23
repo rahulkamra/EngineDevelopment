@@ -277,6 +277,39 @@ TEST(Vector3D, Distance)
 	EXPECT_TRUE(TestUtils::almostEqual(dist, 26.004807f));
 }
 
+//http://www.fundza.com/vectors/normalize/
+TEST(Vector3D, NormalizeSelf)
+{
+	Vector3D vec1(3, 1, 2);
+	vec1.normalize();
 
+	EXPECT_TRUE(TestUtils::almostEqual(vec1.x, 0.80171f) && TestUtils::almostEqual(vec1.y, 0.26723677f) && TestUtils::almostEqual(vec1.z, 0.5344735f));
+}
 
+//http://www.fundza.com/vectors/normalize/
+TEST(Vector3D, ReturnNormalize)
+{
+	Vector3D vec1(3, 1, 2);
+	Vector3D vec2 = normalize(vec1);
+
+	EXPECT_TRUE(TestUtils::almostEqual(vec2.x, 0.80171f) && TestUtils::almostEqual(vec2.y, 0.26723677f) && TestUtils::almostEqual(vec2.z, 0.5344735f));
+}
+
+TEST(Vector3D, Reflect)
+{
+	Vector3D vec1(3, 4, 5);
+	Vector3D vec2(0, 1, 0);
+	Vector3D vec3 = reflect(vec1, vec2);
+	
+	EXPECT_TRUE(vec3.x == -3.0f && vec3.y == 4.0f && vec3.z == -5.0f);
+}
+
+TEST(Vector3D, AngleBetween)
+{
+	Vector3D vec1(2, 3, 4);
+	Vector3D vec2(3, 4, 5);
+	f32 result = angle(vec1, vec2);
+
+	EXPECT_TRUE(TestUtils::almostEqual(result, 0.06437119817f));
+}
 

@@ -1,6 +1,8 @@
 #pragma once
 #include <MathDefine.h>
 #include <Types.h>
+#include "MathUtils.h"
+
 namespace math
 {
 	struct Vector3D
@@ -42,72 +44,6 @@ namespace math
 
 		};
 
-
-		inline Vector3D& operator+=(const Vector3D& rhs)
-		{
-			this->x += rhs.x;
-			this->y += rhs.y;
-			this->z += rhs.z;
-			return *this;
-		}
-
-		inline Vector3D& operator+=(f32 scaler)
-		{
-			this->x += scaler;
-			this->y += scaler;
-			this->z += scaler;
-			return *this;
-		}
-
-		inline Vector3D& operator-=(const Vector3D& rhs)
-		{
-			this->x -= rhs.x;
-			this->y -= rhs.y;
-			this->z -= rhs.z;
-			return *this;
-		}
-
-		inline Vector3D& operator-=(f32 scaler)
-		{
-			this->x -= scaler;
-			this->y -= scaler;
-			this->z -= scaler;
-			return *this;
-		}
-
-		//hadamard product
-		inline Vector3D& operator*=(const Vector3D& rhs)
-		{
-			this->x *= rhs.x;
-			this->y *= rhs.y;
-			this->z *= rhs.z;
-			return *this;
-		}
-
-		inline Vector3D& operator*=(f32 scaler)
-		{
-			this->x *= scaler;
-			this->y *= scaler;
-			this->z *= scaler;
-			return *this;
-		}
-
-		inline Vector3D& operator/=(const Vector3D& rhs)
-		{
-			this->x /= rhs.x;
-			this->y /= rhs.y;
-			this->z /= rhs.z;
-			return *this;
-		}
-
-		inline Vector3D& operator/=(f32 scaler)
-		{
-			this->x /= scaler;
-			this->y /= scaler;
-			this->z /= scaler;
-			return *this;
-		}
-
 		Vector3D(const Vector3D& source)
 		{
 			this->x = source.x;
@@ -133,7 +69,79 @@ namespace math
 			return sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
 		}
 
+		inline void normalize()
+		{
+			const f32 length = this->length();
+			this->x /= length;
+			this->y /= length;
+			this->z /= length;
+		}
+
 	};
+
+	inline Vector3D& operator+=(Vector3D& lhs, const Vector3D& rhs)
+	{
+		lhs.x += rhs.x;
+		lhs.y += rhs.y;
+		lhs.z += rhs.z;
+		return lhs;
+	}
+
+	inline Vector3D& operator+=(Vector3D& lhs, f32 scaler)
+	{
+		lhs.x += scaler;
+		lhs.y += scaler;
+		lhs.z += scaler;
+		return lhs;
+	}
+
+	inline Vector3D& operator-=(Vector3D& lhs, const Vector3D& rhs)
+	{
+		lhs.x -= rhs.x;
+		lhs.y -= rhs.y;
+		lhs.z -= rhs.z;
+		return lhs;
+	}
+
+	inline Vector3D& operator-=(Vector3D& lhs, f32 scaler)
+	{
+		lhs.x -= scaler;
+		lhs.y -= scaler;
+		lhs.z -= scaler;
+		return lhs;
+	}
+
+	inline Vector3D& operator*=(Vector3D& lhs, const Vector3D& rhs)
+	{
+		lhs.x *= rhs.x;
+		lhs.y *= rhs.y;
+		lhs.z *= rhs.z;
+		return lhs;
+	}
+
+	inline Vector3D& operator*=(Vector3D& lhs, f32 scaler)
+	{
+		lhs.x *= scaler;
+		lhs.y *= scaler;
+		lhs.z *= scaler;
+		return lhs;
+	}
+
+	inline Vector3D& operator/=(Vector3D& lhs, const Vector3D& rhs)
+	{
+		lhs.x /= rhs.x;
+		lhs.y /= rhs.y;
+		lhs.z /= rhs.z;
+		return lhs;
+	}
+
+	inline Vector3D& operator/=(Vector3D& lhs, f32 scaler)
+	{
+		lhs.x /= scaler;
+		lhs.y /= scaler;
+		lhs.z /= scaler;
+		return lhs;
+	}
 
 	inline Vector3D operator+(const Vector3D& lhs, const Vector3D& rhs)
 	{
@@ -213,7 +221,30 @@ namespace math
 			);
 	}
 
+	inline Vector3D normalize(Vector3D& source)
+	{
+		return Vector3D(source) / source.length();
+	}
 
+	//Formula r = 2(d?n)n-d
+	inline Vector3D reflect(Vector3D& source, Vector3D& normal)
+	{
+		return (2 * normal * dot(source, normal)) - source;
+	}
 
+	//Forumula a.b/|a|*|b|
+	inline f32 angle(Vector3D& lhs, Vector3D& rhs)
+	{
+		return MathUtils::acos(dot(lhs, rhs) / (lhs.length()*rhs.length()));
+	}
 
+	inline std::ostream& operator<<(std::ostream &out, Vector3D& source)
+	{
+		// Since operator<< is a friend of the Point class, we can access
+		// Point's members directly.
+		out << "Vector3D(" << source.x << ", " <<
+			source.y << ", " <<
+			source.z << ")";
+		return out;
+	}
 }

@@ -6,7 +6,7 @@
 class MathUtils
 {
 public:
-	f32 static acos(f32 scalar)
+	inline f32 static acos(f32 scalar)
 	{
 		return _CSTD acos(scalar);
 	}

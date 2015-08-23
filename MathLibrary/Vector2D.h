@@ -226,6 +226,14 @@ namespace math
 		return MathUtils::acos(dot(lhs, rhs) / (lhs.length()*rhs.length()));
 	}
 
+	inline std::ostream& operator<<(std::ostream &out, Vector2D& source)
+	{
+		// Since operator<< is a friend of the Point class, we can access
+		// Point's members directly.
+		out << "Vector2D(" << source.x << ", " <<
+			source.y << ", " << ")";
+		return out;
+	}
 }
 
 

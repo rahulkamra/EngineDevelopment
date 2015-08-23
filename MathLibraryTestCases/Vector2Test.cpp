@@ -314,4 +314,3 @@ TEST(Vector2D, AngleBetween)
 	EXPECT_TRUE(TestUtils::almostEqual(result, 0.05549850524f));
 }
 
-
