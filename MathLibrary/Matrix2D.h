@@ -129,7 +129,7 @@ namespace math
 
 	inline Matrix2D& operator*=(const Matrix2D& lhs, const Matrix2D& rhs)
 	{
-
+		//cross product
 	}
 
 	//vector will always come on the right side / 2*2 matric and 2*1 vector (vector is a column major one)
@@ -186,16 +186,32 @@ namespace math
 	}
 
 
-
-	inline Matrix2D inverse()
+	inline Matrix2D transpose(const Matrix2D& source)
 	{
-
+		Matrix2D result;
+		for (usize i = 0; i < 2; i++)
+		{
+			for (usize j = 0; j < 2; j++)
+				result[i][j] = source[j][i];
+		}
 	}
 
-	inline Matrix2D transpose()
+	inline f32 determinant(const Matrix2D& source)
 	{
-
+		return source[0][0] * source[1][1] - source[1][0] * source[0][1];
 	}
 
+	inline Matrix2D inverse(const Matrix2D& source)
+	{
+		Matrix2D result;
+		result[0][0] = source[1][1];
+		result[1][1] = source[0][0];
 
+		result[1][0] = -source[1][0];
+		result[0][1] = -source[0][1];
+
+		result /= determinant(source);
+		return result;
+	}
+	
 }

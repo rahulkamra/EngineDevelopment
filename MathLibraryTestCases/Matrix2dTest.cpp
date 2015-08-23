@@ -96,3 +96,23 @@ TEST(Matrix2D, MultiplyWithVector)
 	EXPECT_TRUE(result.x == -21 && result.y == 57);
 }
 
+
+TEST(Matrix2D, Determinant)
+{
+	Matrix2D matrix(Vector2D{ 5 , -1 }, Vector2D{ 3 , 4 });
+	EXPECT_TRUE(determinant(matrix) == 23);
+}
+
+TEST(Matrix2D, Inverse)
+{
+	Matrix2D matrix(Vector2D{ 3 , -7 }, Vector2D{ 5 , 2 });
+	Matrix2D inverseMatrix = inverse(matrix);
+
+	EXPECT_TRUE(TestUtils::almostEqual(inverseMatrix[0][0],  2/41.0f));
+	EXPECT_TRUE(TestUtils::almostEqual(inverseMatrix[0][1],  7/41.0f));
+
+	EXPECT_TRUE(TestUtils::almostEqual(inverseMatrix[1][0], -5/41.0f));
+	EXPECT_TRUE(TestUtils::almostEqual(inverseMatrix[1][1],  3/41.0f));
+
+
+}
