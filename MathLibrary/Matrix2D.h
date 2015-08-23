@@ -123,16 +123,18 @@ namespace math
 
 	inline Matrix2D operator*(const Matrix2D& lhs, const Matrix2D& rhs)
 	{
-		//cross product
+		Matrix2D result;
+
+		result[0][0] = rhs[0][0] * lhs[0][0] + rhs[0][1] * lhs[1][0];
+		result[0][1] = rhs[0][0] * lhs[0][1] + rhs[0][1] * lhs[1][1];
+
+		result[1][0] = rhs[1][0] * lhs[0][0] + rhs[1][1] * lhs[1][0];
+		result[1][1] = rhs[1][0] * lhs[0][1] + rhs[1][1] * lhs[1][1];
+
+		return result;
 	}
 
 
-	inline Matrix2D& operator*=(const Matrix2D& lhs, const Matrix2D& rhs)
-	{
-		//cross product
-	}
-
-	//vector will always come on the right side / 2*2 matric and 2*1 vector (vector is a column major one)
 	inline Vector2D const operator*(const Matrix2D& lhs, const Vector2D& rhs)
 	{
 		return lhs[0] * rhs.x + lhs[1] * rhs.y;
