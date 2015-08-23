@@ -3,7 +3,6 @@
 #include <Vector2D.h>
 #include <math.h>
 #include <array>
-#include <StringUtils.h>
 
 namespace math
 {

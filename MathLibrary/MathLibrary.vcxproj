@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="MathDefine.h" />
     <ClInclude Include="Matrix2D.h" />
+    <ClInclude Include="StringUtils.h" />
     <ClInclude Include="Types.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Vector3D.h" />

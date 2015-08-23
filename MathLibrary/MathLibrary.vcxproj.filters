@@ -30,5 +30,8 @@
     <ClInclude Include="Types.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="StringUtils.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

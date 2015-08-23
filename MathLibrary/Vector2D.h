@@ -3,7 +3,6 @@
 #include <MathDefine.h>
 #include <Types.h>
 #include <MathUtils.h>
- 
 namespace math
 {
 	struct Vector2D
@@ -63,6 +62,11 @@ namespace math
 		}
 
 		inline f32 operator[](const int& index) const
+		{
+			return data[index];
+		}
+
+		inline f32& operator[](const int& index)
 		{
 			return data[index];
 		}
@@ -209,19 +213,19 @@ namespace math
 			);
 	}
 
-	inline Vector2D normalize(Vector2D& source)
+	inline Vector2D normalize(const Vector2D& source)
 	{
 		return Vector2D(source) / source.length();
 	}
 
 	//Formula r = 2(d?n)n-d
-	inline Vector2D reflect(Vector2D& source, Vector2D& normal)
+	inline Vector2D reflect(const Vector2D& source, const  Vector2D& normal)
 	{
 		return (2 * normal * dot(source, normal)) - source;
 	}
 
 	//Forumula a.b/|a|*|b|
-	inline f32 angle(Vector2D& lhs, Vector2D& rhs)
+	inline f32 angle(const Vector2D& lhs, const Vector2D& rhs)
 	{
 		return MathUtils::acos(dot(lhs, rhs) / (lhs.length()*rhs.length()));
 	}
