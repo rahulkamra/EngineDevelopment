@@ -2,6 +2,7 @@
 #include <MathDefine.h>
 #include <Types.h>
 #include "MathUtils.h"
+#include <iostream>
 
 namespace math
 {
@@ -100,6 +101,11 @@ namespace math
 		return lhs;
 	}
 
+	inline Vector3 operator+(const Vector3& lhs, const Vector3& rhs)
+	{
+		return Vector3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
+	}
+
 	inline Vector3& operator-=(Vector3& lhs, const Vector3& rhs)
 	{
 		lhs.x -= rhs.x;
@@ -114,6 +120,16 @@ namespace math
 		lhs.y -= scaler;
 		lhs.z -= scaler;
 		return lhs;
+	}
+
+	inline Vector3 operator-(const Vector3& lhs, const Vector3& rhs)
+	{
+		return Vector3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
+	}
+
+	inline Vector3 operator-(const Vector3& rhs)
+	{
+		return Vector3(-rhs.x, -rhs.y, -rhs.z);
 	}
 
 	inline Vector3& operator*=(Vector3& lhs, const Vector3& rhs)
@@ -132,38 +148,6 @@ namespace math
 		return lhs;
 	}
 
-	inline Vector3& operator/=(Vector3& lhs, const Vector3& rhs)
-	{
-		lhs.x /= rhs.x;
-		lhs.y /= rhs.y;
-		lhs.z /= rhs.z;
-		return lhs;
-	}
-
-	inline Vector3& operator/=(Vector3& lhs, f32 scaler)
-	{
-		lhs.x /= scaler;
-		lhs.y /= scaler;
-		lhs.z /= scaler;
-		return lhs;
-	}
-
-	inline Vector3 operator+(const Vector3& lhs, const Vector3& rhs)
-	{
-		return Vector3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
-	}
-
-
-	inline Vector3 operator-(const Vector3& lhs, const Vector3& rhs)
-	{
-		return Vector3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
-	}
-
-	inline Vector3 operator-(const Vector3& rhs)
-	{
-		return Vector3(-rhs.x, -rhs.y, -rhs.z);
-	}
-
 	inline Vector3 operator*(f32 scaler, const Vector3& rhs)
 	{
 		return Vector3(scaler*rhs.x, scaler*rhs.y, scaler*rhs.z);
@@ -179,6 +163,21 @@ namespace math
 		return Vector3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
 	}
 
+	inline Vector3& operator/=(Vector3& lhs, const Vector3& rhs)
+	{
+		lhs.x /= rhs.x;
+		lhs.y /= rhs.y;
+		lhs.z /= rhs.z;
+		return lhs;
+	}
+
+	inline Vector3& operator/=(Vector3& lhs, f32 scaler)
+	{
+		lhs.x /= scaler;
+		lhs.y /= scaler;
+		lhs.z /= scaler;
+		return lhs;
+	}
 
 	inline Vector3 operator/(const Vector3& lhs, f32 scaler)
 	{
@@ -247,7 +246,7 @@ namespace math
 	{
 		// Since operator<< is a friend of the Point class, we can access
 		// Point's members directly.
-		out << "Vector3D(" << source.x << ", " <<
+		out << "Vector3(" << source.x << ", " <<
 			source.y << ", " <<
 			source.z << ")";
 		return out;

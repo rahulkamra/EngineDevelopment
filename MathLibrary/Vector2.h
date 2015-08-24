@@ -99,6 +99,11 @@ namespace math
 		return lhs;
 	}
 
+	inline Vector2 operator+(const Vector2& lhs, const Vector2& rhs)
+	{
+		return Vector2(lhs.x + rhs.x, lhs.y + rhs.y);
+	}
+
 	inline Vector2& operator-=(Vector2& lhs, const Vector2& rhs)
 	{
 		lhs.x -= rhs.x;
@@ -113,11 +118,14 @@ namespace math
 		return lhs;
 	}
 
-	inline Vector2& operator*=(Vector2& lhs, const Vector2& rhs)
+	inline Vector2 operator-(const Vector2& lhs, const Vector2& rhs)
 	{
-		lhs.x *= rhs.x;
-		lhs.y *= rhs.y;
-		return lhs;
+		return Vector2(lhs.x - rhs.x, lhs.y - rhs.y);
+	}
+
+	inline Vector2 operator-(const Vector2& rhs)
+	{
+		return Vector2(-rhs.x, -rhs.y);
 	}
 
 	inline Vector2& operator*=(Vector2& lhs, f32 scaler)
@@ -127,35 +135,12 @@ namespace math
 		return lhs;
 	}
 
-	inline Vector2& operator/=(Vector2& lhs, const Vector2& rhs)
+	inline Vector2& operator*=(Vector2& lhs, const Vector2& rhs)
 	{
-		lhs.x /= rhs.x;
-		lhs.y /= rhs.y;
+		lhs.x *= rhs.x;
+		lhs.y *= rhs.y;
 		return lhs;
 	}
-
-	inline Vector2& operator/=(Vector2& lhs, f32 scaler)
-	{
-		lhs.x /= scaler;
-		lhs.y /= scaler;
-		return lhs;
-	}
-
-	inline Vector2 operator+(const Vector2& lhs, const Vector2& rhs)
-	{
-		return Vector2(lhs.x + rhs.x, lhs.y + rhs.y);
-	}
-
-	inline Vector2 operator-(const Vector2& lhs, const Vector2& rhs)
-	{
-		return Vector2(lhs.x - rhs.x, lhs.y - rhs.y);
-	}
-
-	inline Vector2 operator-(const Vector2& rhs)
-	{
-		return Vector2(- rhs.x, - rhs.y);
-	}
-
 
 	inline Vector2 operator*(f32 scaler, const Vector2& rhs)
 	{
@@ -170,6 +155,20 @@ namespace math
 	inline Vector2 operator*(const Vector2& lhs, Vector2& rhs)
 	{
 		return Vector2(lhs.x * rhs.x, lhs.y * rhs.y);
+	}
+
+	inline Vector2& operator/=(Vector2& lhs, f32 scaler)
+	{
+		lhs.x /= scaler;
+		lhs.y /= scaler;
+		return lhs;
+	}
+
+	inline Vector2& operator/=(Vector2& lhs, const Vector2& rhs)
+	{
+		lhs.x /= rhs.x;
+		lhs.y /= rhs.y;
+		return lhs;
 	}
 
 	inline Vector2 operator/(const Vector2& lhs, f32 scaler)
@@ -234,7 +233,7 @@ namespace math
 	{
 		// Since operator<< is a friend of the Point class, we can access
 		// Point's members directly.
-		out << "Vector2D(" << source.x << ", " <<
+		out << "Vector2(" << source.x << ", " <<
 			source.y << ", " << ")";
 		return out;
 	}
