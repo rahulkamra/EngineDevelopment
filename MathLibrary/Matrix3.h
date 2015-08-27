@@ -114,17 +114,16 @@ namespace math
 	inline Matrix3 operator*(const Matrix3& lhs, const Matrix3& rhs)
 	{
 		Matrix3 result;
-
-		//cross product
-
+		result[0] = lhs[0] * rhs[0][0] + lhs[1] * rhs[0][1] + lhs[2] * rhs[0][2];
+		result[1] = lhs[0] * rhs[1][0] + lhs[1] * rhs[1][1] + lhs[2] * rhs[1][2];
+		result[2] = lhs[0] * rhs[2][0] + lhs[1] * rhs[2][1] + lhs[2] * rhs[2][2];
 		return result;
 	}
 
 
 	inline Vector3 const operator*(const Matrix3& lhs, const Vector3& rhs)
 	{
-		//multiplying vector with matrix
-		return Vector3();
+		return lhs[0] * rhs[0] + lhs[1] * rhs[1] + lhs[2] * rhs[2];
 	}
 
 	inline Matrix3 operator/(const Matrix3& lhs, const f32& rhs)
@@ -187,7 +186,9 @@ namespace math
 
 	inline f32 determinant(const Matrix3& source)
 	{
-		return 0.0f;
+		return source[0][0] * (source[1][1] * source[2][2] - source[2][1] * source[1][2]) -
+			source[1][0] * (source[0][1] * source[2][2] - source[0][2] * source[2][1]) +
+			source[2][0] * (source[0][1] * source[1][2] - source[0][2] * source[1][1]);	
 	}
 
 	inline Matrix3 inverse(const Matrix3& source)

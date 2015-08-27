@@ -8,6 +8,7 @@ using namespace math;
 
 TEST(Matrix2, Constrctor)
 {
+	
 	Matrix2 matrix{ Vector2{1,2} , Vector2{ 3,4 } };
 	EXPECT_TRUE((matrix.x == Vector2{ 1,2 }) && (matrix.y == Vector2{ 3 , 4 }));
 }

@@ -56,21 +56,41 @@ TEST(Matrix3, NotEqual)
 	EXPECT_TRUE(matrix1 != matrix2);
 }
 
-TEST(Matrix3, CrossProduct)
+TEST(Matrix3, MatrixMultiplication)
 {
-	
+	Matrix3 matrix1{ Vector3{ 1,2 ,3 } , Vector3{ 4,5,6 } , Vector3{ 7,8,9 } };
+	Matrix3 matrix2{ Vector3{ 3,1 ,2 } , Vector3{ 2,1,5 } , Vector3{ 6,3,1 } };
+
+	Matrix3 result1 = matrix1 * matrix2;
+	Matrix3 result2{ Vector3{ 21,27 ,33 } , Vector3{ 41,49,57 } , Vector3{ 25,35,45 } };
+
+	EXPECT_TRUE(result1 == result2);
 }
 
 
 TEST(Matrix3, MultiplyWithVector)
 {
-	
+	Matrix3 matrix1{ Vector3{ 1,2 ,3 } , Vector3{ 4,5,6 } , Vector3{ 7,8,9 } };
+	Vector3 vec{2,3,4};
+
+	Vector3 result1 = matrix1 * vec;
+
+	Vector3 result2 = Vector3(42,51,60);
+
+	EXPECT_TRUE(result1 == result2);
 }
 
 
 TEST(Matrix3, Determinant)
 {
-	
+	Matrix3 matrix1{ Vector3{ 4,4 ,-2 } , Vector3{ -1,5,0 } , Vector3{ 1,3, 0 } };
+	f32 value = determinant(matrix1);
+	EXPECT_TRUE(value == 16);
+
+	Matrix3 matrix2{ Vector3{ 1,2 ,3 } , Vector3{ 4,5,6 } , Vector3{ 7,8,9 } };
+	f32 value2 = determinant(matrix2);
+	EXPECT_TRUE(value2 == 0);
+
 }
 
 TEST(Matrix3, Inverse)
