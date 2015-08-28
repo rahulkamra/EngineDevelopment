@@ -9,7 +9,7 @@ namespace math
 
 	/*
 	m[0][0] m[1][0] m[2][0] m[3][0]
-	m[0][1] m[1][1] m[2][1] m[3][1]
+	m[0][1] m[1][1] m[2][1] m[3][1] 
 	m[0][2] m[1][2] m[2][2] m[3][2]
 	m[0][3] m[1][3] m[2][3] m[3][3]
 	//Column major matrix and this is how it can be accessed
@@ -125,17 +125,17 @@ namespace math
 	inline Matrix4 operator*(const Matrix4& lhs, const Matrix4& rhs)
 	{
 		Matrix4 result;
-		//result[0] = lhs[0] * rhs[0][0] + lhs[1] * rhs[0][1] + lhs[2] * rhs[0][2];
-		//result[1] = lhs[0] * rhs[1][0] + lhs[1] * rhs[1][1] + lhs[2] * rhs[1][2];
-		//result[2] = lhs[0] * rhs[2][0] + lhs[1] * rhs[2][1] + lhs[2] * rhs[2][2];
+		result[0] = lhs[0] * rhs[0][0] + lhs[1] * rhs[0][1] + lhs[2] * rhs[0][2] + lhs[3] * rhs[0][3];
+		result[1] = lhs[0] * rhs[1][0] + lhs[1] * rhs[1][1] + lhs[2] * rhs[1][2] + lhs[3] * rhs[1][3];
+		result[2] = lhs[0] * rhs[2][0] + lhs[1] * rhs[2][1] + lhs[2] * rhs[2][2] + lhs[3] * rhs[2][3];
+		result[3] = lhs[0] * rhs[3][0] + lhs[1] * rhs[3][1] + lhs[2] * rhs[3][2] + lhs[3] * rhs[3][3];
 		return result;
 	}
 
 
 	inline Vector4 const operator*(const Matrix4& lhs, const Vector4& rhs)
 	{
-		return Vector4();
-		//return lhs[0] * rhs[0] + lhs[1] * rhs[1] + lhs[2] * rhs[2];
+		return lhs[0] * rhs[0] + lhs[1] * rhs[1] + lhs[2] * rhs[2] + lhs[3] * rhs[3];
 	}
 
 	inline Matrix4 operator/(const Matrix4& lhs, const f32& rhs)

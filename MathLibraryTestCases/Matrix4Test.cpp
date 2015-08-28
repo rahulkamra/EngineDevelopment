@@ -101,27 +101,27 @@ TEST(Matrix4, MatrixMultiplicationScaler)
 
 TEST(Matrix4, MatrixMultiplication)
 {
-	////Matrix4 matrix1{ Vector4{ 1,2 ,3 } , Vector4{ 4,5,6 } , Vector4{ 7,8,9 } };
-	//Matrix4 matrix2{ Vector4{ 3,1 ,2 } , Vector4{ 2,1,5 } , Vector4{ 6,3,1 } };
+	Matrix4 matrix1{{ 1,2 ,3 ,4 },{ 4,5,6 , 7 },{ 7,8,9,10 },{3,2, 1,-1 }};
+	Matrix4 matrix2{ {3,1,2,0},{ 2,1,0,5},{ 6,3,1,4},{3,2,1,-1 }};
 
-	//Matrix4 result1 = matrix1 * matrix2;
-	//Matrix4 result2{ Vector4{ 21,27 ,33 } , Vector4{ 41,49,57 } , Vector4{ 25,35,45 } };
+	Matrix4 result1 = matrix1 * matrix2;
+	Matrix4 result2{ { 21,27 ,33,39 },{ 21,19,17,10},{ 37,43,49,51},{15,22,29,37}};	
 
-	//EXPECT_TRUE(result1 == result2);
+	EXPECT_TRUE(result1 == result2);
 }
 
 
 
 TEST(Matrix4, MultiplyWithVector)
 {//
-	//Matrix4 matrix1{ Vector4{ 1,2 ,3 } , Vector4{ 4,5,6 } , Vector4{ 7,8,9 } };
-	//Vector4 vec{ 2,3,4 };
+	Matrix4 matrix1{ { 1,2 ,3 ,4 },{ 4,5,6 , 7 },{ 7,8,9,10 },{ 3,2, 1,-1 } };
+	Vector4 vec{ 2,3,4,1 };
 
-	//Vector4 result1 = matrix1 * vec;
+	Vector4 result1 = matrix1 * vec;
 
-	//Vector4 result2 = Vector4(42, 51, 60);
+	Vector4 result2 = Vector4(45, 53, 61 , 68);
 
-	//EXPECT_TRUE(result1 == result2);
+	EXPECT_TRUE(result1 == result2);
 }
 
 TEST(Matrix4, MatrixDivideScaler)
