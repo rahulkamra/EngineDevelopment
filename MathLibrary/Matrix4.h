@@ -210,19 +210,35 @@ namespace math
 	*/
 	inline f32 determinant(const Matrix4& source)
 	{
-		f32 kp_lo = source[2][2] * source[3][3] - source[3][2] * source[2][3];
-		f32 jp_ln = source[1][2] * source[3][3] - source[3][2] * source[1][3];
-		f32 jo_nk = source[1][2] * source[2][3] - source[1][3] * source[2][2];
-		f32 ip_lm = source[0][2] * source[3][3] - source[3][2] * source[0][3];
-		f32 io_mk = source[0][2] * source[2][3] - source[0][3] * source[2][2];
-		f32 in_jm = source[0][2] * source[1][3] - source[1][2] * source[0][3];
+		const f32 kp_lo = source[2][2] * source[3][3] - source[3][2] * source[2][3];
+		const f32 jp_ln = source[1][2] * source[3][3] - source[3][2] * source[1][3];
+		const f32 jo_nk = source[1][2] * source[2][3] - source[1][3] * source[2][2];
+		const f32 ip_lm = source[0][2] * source[3][3] - source[3][2] * source[0][3];
+		const f32 io_mk = source[0][2] * source[2][3] - source[0][3] * source[2][2];
+		const f32 in_jm = source[0][2] * source[1][3] - source[1][2] * source[0][3];
 
-		f32 c00 =  source[0][0] * (source[1][1] * kp_lo - source[2][1] * jp_ln + source[3][1] * jo_nk);
-		f32 c01 = -source[1][0] * (source[0][1] * kp_lo - source[2][1] * ip_lm + source[3][1] * io_mk);
-		f32 c02 =  source[2][0] * (source[0][1] * jp_ln - source[1][1] * ip_lm + source[3][1] * in_jm);
-		f32 c03 = -source[3][0] * (source[0][1] * jo_nk - source[1][1] * io_mk + source[2][1] * in_jm);
+		const f32 c00 =  source[0][0] * (source[1][1] * kp_lo - source[2][1] * jp_ln + source[3][1] * jo_nk);
+		const f32 c01 = -source[1][0] * (source[0][1] * kp_lo - source[2][1] * ip_lm + source[3][1] * io_mk);
+		const f32 c02 =  source[2][0] * (source[0][1] * jp_ln - source[1][1] * ip_lm + source[3][1] * in_jm);
+		const f32 c03 = -source[3][0] * (source[0][1] * jo_nk - source[1][1] * io_mk + source[2][1] * in_jm);
 		return c00+c01+c02+c03;
 	}
+
+	/**
+	a , b , c ,d
+	e , f , g , h
+	i , j , k , l
+	m , n , o , p
+
+	cofactor matrix
+
+	 f(kp-lo) - g(jp-ln) + h(jo-nk)    -[e(kp-lo) -g(ip-lm) +h(io-mk)]     +[e(jp-ln) - f(ip-lm)+ h(in-jm)]    -[e(jo-nk) - f(io-mk) + g(in-jm)]
+	 b(kp-lo) - c(jp-ln) + d(jo-nk)    -[a(kp-lo) -c(ip-lm) +d(io-mk)]     +[a(jp-ln) - b(ip-lm)+ d(in-jm)]    -[a(jo-nk) - b(io-mk) + c(in-jm)]
+	 b(gp-ho) - c(fp-hn) + d(fo-gn)    -[a(gp-ho) -c(ep-hm) +d(eo-gm)]     +[a(fp-hn) - b(ep-hm)+ d(en-fm)]    -[a(fo-gn) - b(eo-gm) + c(en-fm)]
+	 b(gl-hk) - c(fl-hj) + d(fk-gj)    -[a(gl-hk) -c(el-hi) +d(ek-gi)]     +[a(fl-hj) - b(el-hi) +d(ej-fi)]    -[a(fk-gj) - b(ek-gi) + c(ej-fi)] 
+
+
+	*/
 
 	inline Matrix4 inverse(const Matrix4& source)
 	{
