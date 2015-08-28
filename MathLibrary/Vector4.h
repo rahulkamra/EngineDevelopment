@@ -14,7 +14,7 @@ namespace math
 		{
 		}
 
-		explicit Vector4(f32 data[4]) :x(data[0]), y(data[1]), z(data[2]), w(data[2])
+		explicit Vector4(f32 data[4]) :x(data[0]), y(data[1]), z(data[2]), w(data[3])
 		{
 		}
 
@@ -238,11 +238,10 @@ namespace math
 
 	inline std::ostream& operator<<(std::ostream &out, Vector4& source)
 	{
-		// Since operator<< is a friend of the Point class, we can access
-		// Point's members directly.
 		out << "Vector4(" << source.x << ", " <<
 			source.y << ", " <<
-			source.z << ")";
+			source.z << "," <<
+			source.w << ")";
 		return out;
 	}
 }

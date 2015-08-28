@@ -244,8 +244,6 @@ namespace math
 
 	inline std::ostream& operator<<(std::ostream &out, Vector3& source)
 	{
-		// Since operator<< is a friend of the Point class, we can access
-		// Point's members directly.
 		out << "Vector3(" << source.x << ", " <<
 			source.y << ", " <<
 			source.z << ")";
