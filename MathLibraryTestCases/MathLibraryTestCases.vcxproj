@@ -12,7 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainTest.cpp" />
-    <ClCompile Include="Matrix2dTest.cpp" />
+    <ClCompile Include="Matrix2Test.cpp" />
     <ClCompile Include="Matrix3Test.cpp" />
     <ClCompile Include="Vector2Test.cpp" />
     <ClCompile Include="Vector3Test.cpp" />
