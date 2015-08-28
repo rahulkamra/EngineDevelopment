@@ -174,14 +174,13 @@ TEST(Matrix4, Transpose)
 
 TEST(Matrix4, Determinant)
 {
-	//Matrix4 matrix1{ Vector4{ 4,4 ,-2 } , Vector4{ -1,5,0 } , Vector4{ 1,3, 0 } };
-	//f32 value = determinant(matrix1);
-	//EXPECT_TRUE(value == 16);
+	Matrix4 matrix1{ { 6 , 4 , -1 , 8} ,{ 0 , 13 , 0 , 6} ,{ -3 , 6 , 7 , 0 } ,{ 5 , -8 , 4 , 2} };
+	f32 detMat1= determinant(matrix1);
+	EXPECT_TRUE(detMat1 == 170);
 
-	//Matrix4 matrix2{ Vector4{ 1,2 ,3 } , Vector4{ 4,5,6 } , Vector4{ 7,8,9 } };
-	//f32 value2 = determinant(matrix2);
-	//EXPECT_TRUE(value2 == 0);
-
+	Matrix4 matrix2{ {1,1,2,-1 } ,{ 2,2,7,4} ,{ 2,4,5,-6} ,{ 1,2,2,3}};
+	f32 detMat2 = determinant(matrix2);
+	EXPECT_TRUE(detMat2 == -42);
 }
 
 TEST(Matrix4, Inverse)

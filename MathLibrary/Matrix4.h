@@ -197,11 +197,31 @@ namespace math
 		return result;
 	}
 
+	/**
+			a , b , c ,d
+			e , f , g , h
+			i , j , k , l
+			m , n , o , p
+
+			a(f(kp-lo) - g(jp-ln) + h(jo-nk))
+           -b(e(kp-lo) - g(ip-lm) + h(io-mk))
+		   +c(e(jp-ln) - f(ip-lm) + h(in-jm))
+		   -d(e(jo-nk) - f(io-mk) + g(in-jm))
+	*/
 	inline f32 determinant(const Matrix4& source)
 	{
-		//return source[0][0] * (source[1][1] * source[2][2] - source[2][1] * source[1][2]) -
-			//source[1][0] * (source[0][1] * source[2][2] - source[0][2] * source[2][1]) +
-			//source[2][0] * (source[0][1] * source[1][2] - source[0][2] * source[1][1]);
+		f32 kp_lo = source[2][2] * source[3][3] - source[3][2] * source[2][3];
+		f32 jp_ln = source[1][2] * source[3][3] - source[3][2] * source[1][3];
+		f32 jo_nk = source[1][2] * source[2][3] - source[1][3] * source[2][2];
+		f32 ip_lm = source[0][2] * source[3][3] - source[3][2] * source[0][3];
+		f32 io_mk = source[0][2] * source[2][3] - source[0][3] * source[2][2];
+		f32 in_jm = source[0][2] * source[1][3] - source[1][2] * source[0][3];
+
+		f32 c00 =  source[0][0] * (source[1][1] * kp_lo - source[2][1] * jp_ln + source[3][1] * jo_nk);
+		f32 c01 = -source[1][0] * (source[0][1] * kp_lo - source[2][1] * ip_lm + source[3][1] * io_mk);
+		f32 c02 =  source[2][0] * (source[0][1] * jp_ln - source[1][1] * ip_lm + source[3][1] * in_jm);
+		f32 c03 = -source[3][0] * (source[0][1] * jo_nk - source[1][1] * io_mk + source[2][1] * in_jm);
+		return c00+c01+c02+c03;
 	}
 
 	inline Matrix4 inverse(const Matrix4& source)
