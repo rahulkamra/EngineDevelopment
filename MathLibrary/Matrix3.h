@@ -6,6 +6,14 @@
 
 namespace math
 {
+
+	/*
+		m[0][0] m[1][0] m[2][0]
+		m[0][1] m[1][1] m[2][1]
+		m[0][2] m[1][2] m[2][2]
+
+		//Column major matrix and this is how it can be accessed
+	*/
 	struct Matrix3
 	{
 
@@ -129,9 +137,9 @@ namespace math
 	inline Matrix3 operator/(const Matrix3& lhs, const f32& rhs)
 	{
 		Matrix3 ret;
-		for (usize row = 0; row < 3; row++)
+		for (usize col = 0; col < 3; col++)
 		{
-			ret[row] = lhs[row] / rhs;
+			ret[col] = lhs[col] / rhs;
 		}
 
 		return ret;
@@ -140,9 +148,9 @@ namespace math
 	inline Matrix3& operator/=(Matrix3& lhs, const f32& rhs)
 	{
 		Matrix3 ret;
-		for (usize row = 0; row < 3; row++)
+		for (usize col = 0; col < 3; col++)
 		{
-			lhs[row] /= rhs;
+			lhs[col] /= rhs;
 		}
 
 		return ret;
@@ -182,6 +190,7 @@ namespace math
 			for (usize j = 0; j < 3; j++)
 				result[i][j] = source[j][i];
 		}
+		return result;
 	}
 
 	inline f32 determinant(const Matrix3& source)
@@ -192,9 +201,30 @@ namespace math
 	}
 
 	inline Matrix3 inverse(const Matrix3& source)
+	{		
+		Matrix3 cofactorsTransposed;
+		cofactorsTransposed[0][0] = +(source[1][1] * source[2][2] - source[1][2] * source[2][1]);
+		cofactorsTransposed[1][0] = -(source[1][0] * source[2][2] - source[2][0] * source[1][2]);
+		cofactorsTransposed[2][0] = +(source[1][0] * source[2][1] - source[2][0] * source[1][1]);
+
+		cofactorsTransposed[0][1] = -(source[0][1] * source[2][2] - source[2][1] * source[0][2]);
+		cofactorsTransposed[1][1] = +(source[0][0] * source[2][2] - source[2][0] * source[0][2]);
+		cofactorsTransposed[2][1] = -(source[0][0] * source[2][1] - source[2][0] * source[0][1]);
+
+		cofactorsTransposed[0][2] = +(source[0][1] * source[2][2] - source[0][2] * source[1][1]);
+		cofactorsTransposed[1][2] = -(source[0][0] * source[1][2] - source[1][0] * source[0][2]);
+		cofactorsTransposed[2][2] = +(source[0][0] * source[1][1] - source[1][0] * source[0][1]);
+
+
+		return cofactorsTransposed / determinant(source);
+	}
+
+	inline std::ostream& operator<<(std::ostream &out, Matrix3& source)
 	{
-		Matrix3 result;
-		return result;
+		out << "Matrix3(" << source.x << ", \n " <<
+			source.y << ", \n" <<
+			source.z << ")";
+		return out;
 	}
 
 }

@@ -95,7 +95,13 @@ TEST(Matrix3, Determinant)
 
 TEST(Matrix3, Inverse)
 {
+	Matrix3 matrix1{ Vector3{ 1,0 , 1 } , Vector3{ 0,2,1 } , Vector3{ 1,1, 1 } };
+	Matrix3 result1{ Vector3{ -1  ,-1 , 2 } , Vector3{ -1 , 0 , 1} ,Vector3{ 2 , 1 , -2 } };
+
+
+	Matrix3 matrix2{ Vector3{ 1,0 , 3 } , Vector3{ 5,2,0 } , Vector3{ 0,4, 0 } };
+	Matrix3 result2{ Vector3{ 0  , (f32)1/5 , (f32)-1/10 } , Vector3{ 0 , 0 , (f32)1/4 } ,Vector3{ (f32)1/3 ,(f32)-1/15 ,(f32)1/30 } };
 	
-
-
+	EXPECT_TRUE(TestUtils::almostEqual(inverse(matrix1) , result1));
+	EXPECT_TRUE(TestUtils::almostEqual(inverse(matrix2), result2));
 }

@@ -1,8 +1,12 @@
+#pragma once;
 #include <math.h>
+#include <Matrix3.h>
 #define TEST_UTILS_PRECISION 0.0001
 
+using namespace math;
 class TestUtils
 {
+
 public :
 	bool static almostEqual(f32 lhs , f32 rhs)
 	{
@@ -17,9 +21,9 @@ public :
 		}
 	}
 
+	
 	bool static almostEqual(f32 lhs, f64 rhs)
-	{
-
+	{			
 		if (abs(lhs - rhs) < TEST_UTILS_PRECISION)
 		{
 			return true;
@@ -28,6 +32,16 @@ public :
 		{
 			return false;
 		}
+	}
+
+	bool static almostEqual(Matrix3& lhs, Matrix3& rhs)
+	{
+		return almostEqual(lhs.x, rhs.x) && almostEqual(lhs.y, rhs.y) && almostEqual(lhs.z, rhs.z);
+	}
+
+	bool static almostEqual(const Vector3& lhs, const Vector3& rhs)
+	{
+		return almostEqual(lhs.x, rhs.x) && almostEqual(lhs.y, rhs.y) && almostEqual(lhs.z, rhs.z);
 	}
 
 };
