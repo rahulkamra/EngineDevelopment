@@ -14,10 +14,11 @@
     <ClInclude Include="MathDefine.h" />
     <ClInclude Include="Matrix2.h" />
     <ClInclude Include="Matrix3.h" />
-    <ClInclude Include="StringUtils.h" />
+    <ClInclude Include="Matrix4.h" />
     <ClInclude Include="Types.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
+    <ClInclude Include="Vector4.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0E8EFB29-26CD-476F-B255-AA02128A24A9}</ProjectGuid>

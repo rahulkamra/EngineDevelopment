@@ -21,9 +21,6 @@
     <ClInclude Include="Types.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="StringUtils.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Matrix3.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -34,6 +31,12 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Vector3.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

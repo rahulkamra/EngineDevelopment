@@ -56,9 +56,9 @@ namespace math
 
 		inline Matrix3& operator=(const Matrix3& rhs)
 		{
-			for (usize row = 0; row < 3; row++)
+			for (usize col = 0; col < 3; col++)
 			{
-				(*this)[row] = rhs[row];
+				(*this)[col] = rhs[col];
 			}
 
 			return *this;
@@ -71,9 +71,9 @@ namespace math
 	inline Matrix3 operator+(const Matrix3& lhs, const Matrix3& rhs)
 	{
 		Matrix3 ret;
-		for (usize row = 0; row < 3; row++)
+		for (usize col = 0; col < 3; col++)
 		{
-			ret[row] = lhs[row] + rhs[row];
+			ret[col] = lhs[col] + rhs[col];
 		}
 
 		return ret;
@@ -82,9 +82,9 @@ namespace math
 
 	inline Matrix3& operator+=(Matrix3& lhs, const Matrix3& rhs)
 	{
-		for (usize row = 0; row < 3; row++)
+		for (usize col = 0; col < 3; col++)
 		{
-			lhs[row] += rhs[row];
+			lhs[col] += rhs[col];
 		}
 		return lhs;
 	}
@@ -92,18 +92,18 @@ namespace math
 	inline Matrix3 operator-(const Matrix3& lhs, const Matrix3& rhs)
 	{
 		Matrix3 ret;
-		for (usize row = 0; row < 3; row++)
+		for (usize col = 0; col < 3; col++)
 		{
-			ret[row] = lhs[row] - rhs[row];
+			ret[col] = lhs[col] - rhs[col];
 		}
 		return ret;
 	}
 
 	inline Matrix3& operator-=(Matrix3& lhs, const Matrix3& rhs)
 	{
-		for (usize row = 0; row < 3; row++)
+		for (usize col = 0; col < 3; col++)
 		{
-			lhs[row] -= rhs[row];
+			lhs[col] -= rhs[col];
 		}
 		return lhs;
 	}
@@ -111,9 +111,9 @@ namespace math
 	inline Matrix3 operator*(const Matrix3& lhs, const f32& rhs)
 	{
 		Matrix3 ret;
-		for (usize row = 0; row < 3; row++)
+		for (usize col = 0; col < 3; col++)
 		{
-			ret[row] = lhs[row] * rhs;
+			ret[col] = lhs[col] * rhs;
 		}
 
 		return ret;
