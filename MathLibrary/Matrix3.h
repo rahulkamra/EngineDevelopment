@@ -215,8 +215,9 @@ namespace math
 		cofactorsTransposed[1][2] = -(source[0][0] * source[1][2] - source[1][0] * source[0][2]);
 		cofactorsTransposed[2][2] = +(source[0][0] * source[1][1] - source[1][0] * source[0][1]);
 
+		cofactorsTransposed /= determinant(source);
 
-		return cofactorsTransposed / determinant(source);
+		return cofactorsTransposed;
 	}
 
 	inline std::ostream& operator<<(std::ostream &out, Matrix3& source)
