@@ -10,7 +10,7 @@ namespace math
 {
 	struct Vector4
 	{
-		explicit Vector4(f32 x = 0.0f, f32 y = 0.0f, f32 z = 0.0f, f32 w = 0.0f) :x(x), y(y), z(z), w(w)
+		Vector4(f32 x = 0.0f, f32 y = 0.0f, f32 z = 0.0f, f32 w = 0.0f) :x(x), y(y), z(z), w(w)
 		{
 		}
 
