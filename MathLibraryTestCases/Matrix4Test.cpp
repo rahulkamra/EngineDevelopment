@@ -185,13 +185,12 @@ TEST(Matrix4, Determinant)
 
 TEST(Matrix4, Inverse)
 {
-	//Matrix4 matrix1{ Vector4{ 1,0 , 1 } , Vector4{ 0,2,1 } , Vector4{ 1,1, 1 } };
-	//Matrix4 result1{ Vector4{ -1  ,-1 , 2 } , Vector4{ -1 , 0 , 1 } ,Vector4{ 2 , 1 , -2 } };
+	Matrix4 matrix1{ { 1,0,2,2} ,{ 0,2,1,0} ,{ 0,1,0,1} ,{ 1,2,1,4} };
+	Matrix4 invMatrix = inverse(matrix1);
+	Matrix4 resultInv{ {-2,1,-8,3} , {-0.5,0.5,-1,0.5},{1,0,2,-1},{0.5,-0.5,2,-0.5} };
+	EXPECT_TRUE(resultInv == invMatrix);
 
-
-	//Matrix4 matrix2{ Vector4{ 1,0 , 3 } , Vector4{ 5,2,0 } , Vector4{ 0,4, 0 } };
-	//Matrix4 result2{ Vector4{ 0  , (f32)1 / 5 , (f32)-1 / 10 } , Vector4{ 0 , 0 , (f32)1 / 4 } ,Vector4{ (f32)1 / 3 ,(f32)-1 / 15 ,(f32)1 / 30 } };
-
-	//EXPECT_TRUE(TestUtils::almostEqual(inverse(matrix1), result1));
-	//EXPECT_TRUE(TestUtils::almostEqual(inverse(matrix2), result2));
+	Matrix4 product = matrix1 * invMatrix;
+	EXPECT_TRUE(determinant(product) == 1.0f);
+	
 }

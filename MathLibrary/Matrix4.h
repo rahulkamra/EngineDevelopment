@@ -232,32 +232,65 @@ namespace math
 
 	cofactor matrix
 
-	 f(kp-lo) - g(jp-ln) + h(jo-nk)    -[e(kp-lo) -g(ip-lm) +h(io-mk)]     +[e(jp-ln) - f(ip-lm)+ h(in-jm)]    -[e(jo-nk) - f(io-mk) + g(in-jm)]
-	 b(kp-lo) - c(jp-ln) + d(jo-nk)    -[a(kp-lo) -c(ip-lm) +d(io-mk)]     +[a(jp-ln) - b(ip-lm)+ d(in-jm)]    -[a(jo-nk) - b(io-mk) + c(in-jm)]
-	 b(gp-ho) - c(fp-hn) + d(fo-gn)    -[a(gp-ho) -c(ep-hm) +d(eo-gm)]     +[a(fp-hn) - b(ep-hm)+ d(en-fm)]    -[a(fo-gn) - b(eo-gm) + c(en-fm)]
-	 b(gl-hk) - c(fl-hj) + d(fk-gj)    -[a(gl-hk) -c(el-hi) +d(ek-gi)]     +[a(fl-hj) - b(el-hi) +d(ej-fi)]    -[a(fk-gj) - b(ek-gi) + c(ej-fi)] 
+	 +[f(kp-lo) - g(jp-ln) + h(jo-nk)]    -[e(kp-lo) -g(ip-lm) +h(io-mk)]     +[e(jp-ln) - f(ip-lm)+ h(in-jm)]    -[e(jo-nk) - f(io-mk) + g(in-jm)]
+	 -[b(kp-lo) - c(jp-ln) + d(jo-nk)]    +[a(kp-lo) -c(ip-lm) +d(io-mk)]     -[a(jp-ln) - b(ip-lm)+ d(in-jm)]    +[a(jo-nk) - b(io-mk) + c(in-jm)]
+	 +[b(gp-ho) - c(fp-hn) + d(fo-gn)]    -[a(gp-ho) -c(ep-hm) +d(eo-gm)]     +[a(fp-hn) - b(ep-hm)+ d(en-fm)]    -[a(fo-gn) - b(eo-gm) + c(en-fm)]
+	 -[b(gl-hk) - c(fl-hj) + d(fk-gj) ]   +[a(gl-hk) -c(el-hi) +d(ek-gi)]     -[a(fl-hj) - b(el-hi) +d(ej-fi)]    +[a(fk-gj) - b(ek-gi) + c(ej-fi)] 
 
 
 	*/
 
 	inline Matrix4 inverse(const Matrix4& source)
 	{
-		Matrix4 cofactorsTransposed;
-		//cofactorsTransposed[0][0] = +(source[1][1] * source[2][2] - source[1][2] * source[2][1]);
-		//cofactorsTransposed[1][0] = -(source[1][0] * source[2][2] - source[2][0] * source[1][2]);
-		//cofactorsTransposed[2][0] = +(source[1][0] * source[2][1] - source[2][0] * source[1][1]);
+		const f32 kp_lo = source[2][2] * source[3][3] - source[3][2] * source[2][3];
+		const f32 jp_ln = source[1][2] * source[3][3] - source[3][2] * source[1][3];
+		const f32 jo_nk = source[1][2] * source[2][3] - source[1][3] * source[2][2];
 
-	//	cofactorsTransposed[0][1] = -(source[0][1] * source[2][2] - source[2][1] * source[0][2]);
-		//cofactorsTransposed[1][1] = +(source[0][0] * source[2][2] - source[2][0] * source[0][2]);
-		//cofactorsTransposed[2][1] = -(source[0][0] * source[2][1] - source[2][0] * source[0][1]);
+		const f32 ip_lm = source[0][2] * source[3][3] - source[3][2] * source[0][3];
+		const f32 io_mk = source[0][2] * source[2][3] - source[0][3] * source[2][2];
+		const f32 in_jm = source[0][2] * source[1][3] - source[1][2] * source[0][3];
 
-		//cofactorsTransposed[0][2] = +(source[0][1] * source[2][2] - source[0][2] * source[1][1]);
-		//cofactorsTransposed[1][2] = -(source[0][0] * source[1][2] - source[1][0] * source[0][2]);
-		//cofactorsTransposed[2][2] = +(source[0][0] * source[1][1] - source[1][0] * source[0][1]);
+		const f32 gp_ho = source[2][1] * source[3][3] - source[3][1] * source[2][3];
+		const f32 fp_hn = source[1][1] * source[3][3] - source[3][1] * source[1][3];
+		const f32 fo_gn = source[1][1] * source[2][3] - source[2][1] * source[1][3];
 
-		//cofactorsTransposed /= determinant(source);
+		const f32 ep_hm = source[0][1] * source[3][3] - source[3][1] * source[0][3];
+		const f32 eo_gm = source[0][1] * source[2][3] - source[2][1] * source[0][3];
+		const f32 en_fm = source[0][1] * source[1][3] - source[1][1] * source[0][3];
 
-		return cofactorsTransposed;
+		const f32 gl_hk = source[2][1] * source[3][2] - source[3][1] * source[2][2];
+		const f32 fl_hj = source[1][1] * source[3][2] - source[3][1] * source[1][2];
+		const f32 fk_gj = source[1][1] * source[2][2] - source[2][1] * source[1][2];
+
+		const f32 el_hi = source[0][1] * source[3][2] - source[3][1] * source[0][2];
+		const f32 ek_gi = source[0][1] * source[2][2] - source[2][1] * source[0][2];
+		const f32 ej_fi = source[0][1] * source[1][2] - source[1][1] * source[0][2];
+
+
+		Matrix4 cofactorsTranspose;
+		cofactorsTranspose[0][0] = (+(source[1][1] * kp_lo - source[2][1] * jp_ln + source[3][1] * jo_nk));
+		cofactorsTranspose[1][0] = (-(source[1][0] * kp_lo - source[2][0] * jp_ln + source[3][0] * jo_nk));
+		cofactorsTranspose[2][0] = (+(source[1][0] * gp_ho - source[2][0] * fp_hn + source[3][0] * fo_gn));
+		cofactorsTranspose[3][0] = (-(source[1][0] * gl_hk - source[2][0] * fl_hj + source[3][0] * fk_gj));
+		
+		cofactorsTranspose[0][1] = (-(source[0][1] * kp_lo - source[2][1] * ip_lm + source[3][1] * io_mk));
+		cofactorsTranspose[1][1] = (+(source[0][0] * kp_lo - source[2][0] * ip_lm + source[3][0] * io_mk));
+		cofactorsTranspose[2][1] = (-(source[0][0] * gp_ho - source[2][0] * ep_hm + source[3][0] * eo_gm));
+		cofactorsTranspose[3][1] = (+(source[0][0] * gl_hk - source[2][0] * el_hi + source[3][0] * ek_gi));
+
+		cofactorsTranspose[0][2] = (+(source[0][1] * jp_ln - source[1][1] * ip_lm + source[3][1] * in_jm));
+		cofactorsTranspose[1][2] = (-(source[0][0] * jp_ln - source[1][0] * ip_lm + source[3][0] * in_jm));
+		cofactorsTranspose[2][2] = (+(source[0][0] * fp_hn - source[1][0] * ep_hm + source[3][0] * en_fm));
+		cofactorsTranspose[3][2] = (-(source[0][0] * fl_hj - source[1][0] * el_hi + source[3][0] * ej_fi));
+		
+		cofactorsTranspose[0][3] = (-(source[0][1] * jo_nk - source[1][1] * io_mk + source[2][1] * in_jm));
+		cofactorsTranspose[1][3] = (+(source[0][0] * jo_nk - source[1][0] * io_mk + source[2][0] * in_jm));
+		cofactorsTranspose[2][3] = (-(source[0][0] * fo_gn - source[1][0] * eo_gm + source[2][0] * en_fm));
+		cofactorsTranspose[3][3] = (+(source[0][0] * fk_gj - source[1][0] * ek_gi + source[2][0] * ej_fi));
+
+		cofactorsTranspose /= determinant(source);
+
+		return cofactorsTranspose;
 	}
 
 	inline std::ostream& operator<<(std::ostream &out, Matrix4& source)
