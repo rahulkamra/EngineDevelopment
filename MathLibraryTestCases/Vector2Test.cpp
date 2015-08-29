@@ -188,7 +188,7 @@ TEST(Vector2, Multiply)
 	Vector2 vec2(3, 2);
 
 	Vector2 result(vec1.x * vec2.x, vec1.y * vec2.y);
-	Vector2 result1 = vec1 * vec2;
+	Vector2 result1 = hadamardProduct(vec1 , vec2);
 
 	EXPECT_TRUE(result.x == result1.x && result.y == result1.y);
 }

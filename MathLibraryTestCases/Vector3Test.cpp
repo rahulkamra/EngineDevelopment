@@ -180,7 +180,7 @@ TEST(Vector3, Multiply)
 	Vector3 vec1(2, 5,7);
 	Vector3 vec2(3, 2 ,1);
 
-	Vector3 result = vec1 * vec2;
+	Vector3 result = hadamardProduct(vec1 ,vec2);
 
 	EXPECT_TRUE(result.x == 6 && result.y == 10 && result.z == 7);
 }

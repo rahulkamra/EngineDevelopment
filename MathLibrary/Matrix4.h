@@ -295,10 +295,10 @@ namespace math
 
 	inline std::ostream& operator<<(std::ostream &out, Matrix4& source)
 	{
-		out << "Matrix4(" << source.x << ", \n " <<
+		out << " \n Matrix4(" << source.x << ", \n " <<
 							source.y << ", \n" <<
 							source.z << ", \n" <<
-							source.w << ")";
+							source.w << ") \n";
 		return out;
 	}
 

@@ -152,7 +152,7 @@ namespace math
 		return scaler * lhs;
 	}
 
-	inline Vector2 operator*(const Vector2& lhs, Vector2& rhs)
+	inline Vector2 hadamardProduct(const Vector2& lhs, Vector2& rhs)
 	{
 		return Vector2(lhs.x * rhs.x, lhs.y * rhs.y);
 	}
