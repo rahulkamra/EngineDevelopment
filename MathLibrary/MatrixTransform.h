@@ -79,11 +79,7 @@ namespace math
 		return result;
 	}
 
-	Matrix4 axisAngleRotation()
-	{
-		Matrix4 result;
-		return result;
-	}
+
 
 }
 

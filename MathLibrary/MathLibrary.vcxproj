@@ -11,11 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EulerAngles.h" />
     <ClInclude Include="MathDefine.h" />
     <ClInclude Include="Matrix2.h" />
     <ClInclude Include="Matrix3.h" />
     <ClInclude Include="Matrix4.h" />
     <ClInclude Include="MatrixTransform.h" />
+    <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Types.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
