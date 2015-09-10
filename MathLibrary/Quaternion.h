@@ -51,37 +51,69 @@ namespace math
 
 	};
 
-	inline Quaternion& operator+(const Quaternion& lhs, const Quaternion& rhs)
+	inline Quaternion operator+(const Quaternion& lhs, const Quaternion& rhs)
 	{
+		Quaternion result;
+		result.x = lhs.x + rhs.x;
+		result.y = lhs.y + rhs.y;
+		result.z = lhs.z + rhs.z;
+		result.w = lhs.w + rhs.w;
 
+		return result;
 	}
 
 
-	inline Quaternion& operator+=(const Quaternion& lhs, const Quaternion& rhs)
+	inline Quaternion& operator+=(Quaternion& lhs, const Quaternion& rhs)
 	{
-
+		lhs.x += rhs.x;
+		lhs.y += rhs.y;
+		lhs.z += rhs.z;
+		lhs.w += rhs.w;
+		return lhs;
 	}
 
 
-	inline Quaternion& operator-(const Quaternion& lhs, const Quaternion& rhs)
+	inline Quaternion operator-(const Quaternion& lhs, const Quaternion& rhs)
 	{
-
+		Quaternion result;
+		result.x = lhs.x - rhs.x;
+		result.y = lhs.y - rhs.y;
+		result.z = lhs.z - rhs.z;
+		result.w = lhs.w - rhs.w;
+		return result;
 	}
 
-	inline Quaternion& operator-(const Quaternion& rhs)
-	{//more like x= -y;
-
+	inline Quaternion& operator-(Quaternion& rhs)//more like x= -y;
+	{
+		rhs.x = -rhs.x;
+		rhs.y = -rhs.y;
+		rhs.z = -rhs.z;
+		rhs.w = -rhs.w;
+		return rhs;
 	}
 
 
-	inline Quaternion& operator-=(const Quaternion& lhs, const Quaternion& rhs)
+	inline Quaternion& operator-=(Quaternion& lhs, const Quaternion& rhs)
 	{
+		lhs.x -= rhs.x;
+		lhs.y -= rhs.y;
+		lhs.z -= rhs.z;
+		lhs.w -= rhs.w;
 
+		return lhs;
 	}
 
-	inline Quaternion& operator*(const Quaternion& lhs, const Quaternion& rhs)
+	//http://www.mathworks.com/help/aeroblks/quaternionmultiplication.html
+	inline Quaternion operator*(const Quaternion& lhs, const Quaternion& rhs)
 	{
+		Quaternion result;
 
+		result.x = rhs.w * lhs.x + rhs.x * lhs.w - rhs.y * lhs.z + rhs.z * lhs.y;
+		result.y = rhs.w * lhs.y + rhs.x * lhs.z + rhs.y * lhs.w - rhs.z * lhs.x;
+		result.z = rhs.w * lhs.z - rhs.x * lhs.y + rhs.y * lhs.x + rhs.z * lhs.w;
+		result.w = rhs.w * lhs.w - rhs.x * lhs.x - rhs.y * lhs.y - rhs.z * lhs.z;
+
+		return result;
 	}
 
 
@@ -90,9 +122,16 @@ namespace math
 
 	}
 
-	inline Quaternion& operator*(const Quaternion& lhs, const f32 rhs)
+	inline Quaternion operator*(const Quaternion& lhs, const f32 rhs)
 	{
+		Quaternion result;
 
+		result.x = lhs.x * rhs;
+		result.y = lhs.y * rhs;
+		result.z = lhs.z * rhs;
+		result.w = lhs.w * rhs;
+
+		return result;
 	}
 
 
@@ -108,33 +147,40 @@ namespace math
 
 	inline Quaternion& operator/(const Quaternion& lhs, const f32 rhs)
 	{
+		Quaternion result;
 
+		result.x = lhs.x / rhs;
+		result.y = lhs.y / rhs;
+		result.z = lhs.z / rhs;
+		result.w = lhs.w / rhs;
+
+		return result;
 	}
 
 	inline bool operator==(const Quaternion& lhs, const Quaternion& rhs)
 	{
-
+		return lhs.x == rhs.x && lhs.y == rhs.y &&lhs.z == rhs.z &&lhs.w == rhs.w;
 	}
 
 	inline bool operator!=(const Quaternion& lhs, const Quaternion& rhs)
 	{
-
+		return !(lhs == rhs);
 	}
 
 	
 	inline f32 lengthSquare(const Quaternion& source)
 	{
-
+		return source.x * source.x + source.y * source.y + source.z * source.z + source.w * source.w;
 	}
 
 	inline f32 length(const Quaternion& source)
 	{
-
+		return sqrt(lengthSquare(source));
 	}
 
 	inline f32 dot(const Quaternion& lhs , const Quaternion& rhs)
 	{
-
+		return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z + lhs.w * rhs.w;
 	}
 
 	inline f32 cross(const Quaternion& lhs, const Quaternion& rhs)
@@ -183,5 +229,9 @@ namespace math
 
 	}
 
+	inline Quaternion slerp(const Quaternion& from , const Quaternion& to , f32 dt)
+	{
+
+	}
 
 }

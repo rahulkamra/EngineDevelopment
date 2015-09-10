@@ -196,6 +196,8 @@ namespace math
 			for (usize j = 0; j < 2; j++)
 				result[i][j] = source[j][i];
 		}
+
+		return result;
 	}
 
 	inline f32 determinant(const Matrix2& source)

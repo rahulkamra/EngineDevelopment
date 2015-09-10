@@ -6,7 +6,7 @@
 
 using namespace math;
 
-TEST(Matrix4, Constrctor)
+TEST(Matrix4, Constructor)
 {
 	Matrix4 matrix{ { 1,2 ,3 ,4 } , { 5 ,6 , 7 , 8} , { 9 , 10,11,12 } , { 13 , 14, 15 , 16 } };
 	EXPECT_TRUE((matrix.x == Vector4{ 1,2 ,3,4 }) && (matrix.y == Vector4{ 5 ,6 , 7 , 8 }) && (matrix.z == Vector4(9, 10, 11, 12) && matrix.w == Vector4(13, 14, 15, 16)));

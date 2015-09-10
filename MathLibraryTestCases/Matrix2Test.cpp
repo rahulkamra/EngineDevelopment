@@ -71,6 +71,102 @@ TEST(Matrix2, Assignment)
 	EXPECT_TRUE(matrix.y == matrix2.y);
 }
 
+
+
+TEST(Matrix2, PlusOperator)
+{
+	Matrix2 matrix1{ Vector2{ 1,2} , Vector2{ 3,4}};
+	Matrix2 matrix2{ Vector2{ 3,2} , Vector2{ 5,3}};
+	Matrix2 sum = matrix1 + matrix2;
+
+	Matrix2 sum2{ Vector2{ 4,4} , Vector2{ 8,7}};
+
+	EXPECT_TRUE(sum == sum2);
+}
+
+TEST(Matrix2, PlusEqualOperator)
+{
+	Matrix2 matrix1{ Vector2{ 1,2 } , Vector2{ 3,4 } };
+	Matrix2 matrix2{ Vector2{ 3,2 } , Vector2{ 5,3 } };
+	matrix2 += matrix1;
+
+	Matrix2 sum2{ Vector2{ 4,4 } , Vector2{ 8,7 } };
+
+	EXPECT_TRUE(matrix2 == sum2);
+}
+
+TEST(Matrix2, SubtractOperator)
+{
+	Matrix2 matrix1{ Vector2{ 1,2} , Vector2{ 3,4}};
+	Matrix2 matrix2{ Vector2{ 3,2} , Vector2{ 5,3}};
+	Matrix2 sub = matrix1 - matrix2;
+
+	Matrix2 sub2{ Vector2{ -2,0} , Vector2{ -2,1}};
+
+	EXPECT_TRUE(sub == sub2);
+}
+
+TEST(Matrix2, SubtractEqualOperator)
+{
+	Matrix2 matrix1{ Vector2{ 1,2 } , Vector2{ 3,4 } };
+	Matrix2 matrix2{ Vector2{ 3,2 } , Vector2{ 5,3 } };
+	matrix1 -= matrix2;
+
+	Matrix2 sub2{ Vector2{ -2,0 } , Vector2{ -2,1 } };
+
+	EXPECT_TRUE(matrix1 == sub2);
+}
+
+TEST(Matrix2, MatrixMultiplicationScaler)
+{
+	Matrix2 matrix1{ Vector2{ 1,2} , Vector2{ 4,5,}};
+
+	Matrix2 result1 = matrix1 * 2;
+	Matrix2 result2{ Vector2{ 2,4} , Vector2{ 8,10}};
+
+	EXPECT_TRUE(result1 == result2);
+}
+
+
+TEST(Matrix2, MatrixMultiplication)
+{
+	Matrix2 matrix1(Vector2{ 1 , 3 }, Vector2{ 2 , 4 });
+	Matrix2 matrix2(Vector2{ 5 , 7 }, Vector2{ 6 , 8 });
+
+	Matrix2 matrix3 = matrix1 * matrix2;
+	Matrix2 matrix4(Vector2{ 19 , 43 }, Vector2{ 22 , 50 });
+
+	EXPECT_TRUE(matrix3 == matrix4);
+}
+
+TEST(Matrix2, MultiplyWithVector)
+{
+	Matrix2 matrix(Vector2{ 2 , 4 }, Vector2{ -3 , 5 });
+	Vector2 vec2(3, 9);
+	Vector2 result = matrix * vec2;
+	EXPECT_TRUE(result.x == -21 && result.y == 57);
+}
+
+TEST(Matrix2, MatrixDivideScaler)
+{
+	Matrix2 matrix1{ Vector2{ 1,2} , Vector2{ 4,5}};
+
+	Matrix2 result1 = matrix1 / 2;
+	Matrix2 result2{ Vector2{ (f32)1 / 2 , (f32)1 } , Vector2{ (f32)4 / 2,(f32)5 / 2}};
+
+	EXPECT_TRUE(TestUtils::almostEqual(result1, result2));
+}
+
+TEST(Matrix2, MatrixDivideEqualScaler)
+{
+	Matrix2 matrix1{ Vector2{ 1,2 } , Vector2{ 4,5 } };
+
+	matrix1 /= 2;
+	Matrix2 result2{ Vector2{ (f32)1 / 2 , (f32)1 } , Vector2{ (f32)4 / 2,(f32)5 / 2 } };
+
+	EXPECT_TRUE(TestUtils::almostEqual(matrix1, result2));
+}
+
 TEST(Matrix2, Equal)
 {
 	Matrix2 matrix{ Vector2{ 2,2 } , Vector2{ 3,4 } };
@@ -86,24 +182,13 @@ TEST(Matrix2, NotEqual)
 	EXPECT_TRUE(matrix != matrix2);
 }
 
-TEST(Matrix2, CrossProduct)
+TEST(Matrix2, Transpose)
 {
-	Matrix2 matrix1(Vector2{ 1 , 3 }, Vector2{ 2 , 4 });
-	Matrix2 matrix2(Vector2{ 5 , 7 }, Vector2{ 6 , 8 });
+	Matrix2 matrix1{ Vector2{ 1,2} , Vector2{ 4,5}};
+	Matrix2 transposed = transpose(matrix1);
 
-	Matrix2 matrix3 = matrix1 * matrix2;
-	Matrix2 matrix4(Vector2{ 19 , 43 }, Vector2{ 22 , 50});
-
-	EXPECT_TRUE(matrix3 == matrix4);
-}
-
-
-TEST(Matrix2, MultiplyWithVector)
-{
-	Matrix2 matrix(Vector2{ 2 , 4 }, Vector2{ -3 , 5 });
-	Vector2 vec2(3, 9);
-	Vector2 result = matrix * vec2;
-	EXPECT_TRUE(result.x == -21 && result.y == 57);
+	Matrix2 result{ { 1 , 4} ,{ 2 , 5}};
+	EXPECT_TRUE(result == transposed);
 }
 
 
@@ -118,11 +203,11 @@ TEST(Matrix2, Inverse)
 	Matrix2 matrix(Vector2{ 3 , -7 }, Vector2{ 5 , 2 });
 	Matrix2 inverseMatrix = inverse(matrix);
 
-	EXPECT_TRUE(TestUtils::almostEqual(inverseMatrix[0][0],  2/41.0f));
-	EXPECT_TRUE(TestUtils::almostEqual(inverseMatrix[0][1],  7/41.0f));
+	EXPECT_TRUE(TestUtils::almostEqual(inverseMatrix[0][0], 2 / 41.0f));
+	EXPECT_TRUE(TestUtils::almostEqual(inverseMatrix[0][1], 7 / 41.0f));
 
-	EXPECT_TRUE(TestUtils::almostEqual(inverseMatrix[1][0], -5/41.0f));
-	EXPECT_TRUE(TestUtils::almostEqual(inverseMatrix[1][1],  3/41.0f));
+	EXPECT_TRUE(TestUtils::almostEqual(inverseMatrix[1][0], -5 / 41.0f));
+	EXPECT_TRUE(TestUtils::almostEqual(inverseMatrix[1][1], 3 / 41.0f));
 
 
 
