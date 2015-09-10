@@ -218,7 +218,22 @@ namespace math
 		return conjugate(source) / source.lengthSquare();
 	}
 
+	inline f32 lengthSquare(const Quaternion& source)
+	{
+		return source.x * source.x + source.y * source.y + source.z * source.z + source.w * source.w;
+	}
 
+
+	inline f32 length(const Quaternion& source)
+	{
+		return sqrt(lengthSquare(source));
+	}
+
+
+	inline Quaternion normalize(const Quaternion& source)
+	{
+		return source / length(source);
+	}
 
 	inline Quaternion axisAngleToQuaternion(const Vector3 axisAngle, f32 angleinRadians)
 	{

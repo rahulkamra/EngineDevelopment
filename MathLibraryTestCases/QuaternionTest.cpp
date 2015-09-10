@@ -130,7 +130,15 @@ TEST(Quaternion, Conjugate)
 
 TEST(Quaternion, normalize)
 {
+	Quaternion q1(1.0f, 2.0f, 3.0f, 4.0f);
+	Quaternion q2(1.0f, 2.0f, 3.0f, 4.0f);
+	q1.normalize();
+	Quaternion q3 = normalize(q2);
 
+	Quaternion q4((f32)1 / sqrt(30), (f32)2 / sqrt(30), (f32)3 / sqrt(30), (f32)4 / sqrt(30));
+	EXPECT_TRUE(TestUtils::almostEqual(q1, q3));
+	EXPECT_TRUE(TestUtils::almostEqual(q1, q4));
+	EXPECT_TRUE(TestUtils::almostEqual(q3, q4));
 }
 
 TEST(Quaternion, axisAngleToQuaternion)
