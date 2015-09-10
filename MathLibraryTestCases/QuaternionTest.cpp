@@ -1,6 +1,8 @@
 #pragma once
 #include <gtest\gtest.h>
+#include <Quaternion.h>
 
+using namespace math;
 TEST(Quaternion, Constructor)
 {
 
@@ -44,12 +46,22 @@ TEST(Quaternion, MinusEqualOperator)
 
 TEST(Quaternion, QuaternionProductWithQuaternion)
 {
+	Quaternion q1(1.0f, 2.0f, 3.0f, 4.0f);
+	Quaternion q2(1.0f, 2.0f, 3.0f, 4.0f);
+	Quaternion q3 = q1 * q2;
 
+	Quaternion result = Quaternion(8,16,24,2);
+
+	EXPECT_TRUE(q3 == result);
 }
 
 TEST(Quaternion, QuaternionProductWithVector)
 {
-
+	Quaternion q(1.0f, 2.0f, 3.0f, 4.0f);
+	Vector3 v = {1,0,0};
+	Vector3 v1 = q * v;
+	Vector3  result = Vector3{ -25 , 28 , -10 };
+	EXPECT_TRUE(v1 == result);
 }
 
 TEST(Quaternion, QuaternionProductWithScaler)

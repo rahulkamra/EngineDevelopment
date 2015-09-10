@@ -1,5 +1,6 @@
 #pragma once
 #include <Types.h>
+#include <Vector3.h>
 #include <Vector4.h>
 #include <Matrix4.h>
 #include <EulerAngles.h>
@@ -14,6 +15,11 @@ namespace math
 			{
 				f32 x, y, z, w;
 			};
+			struct
+			{
+				Vector3 v;
+				f32 w;
+			};
 		};
 
 		Quaternion(const Quaternion& rhs)
@@ -25,6 +31,11 @@ namespace math
 		}
 
 		Quaternion():x(0),y(0),z(0),w(1)
+		{
+
+		}
+
+		Quaternion(f32 x, f32 y, f32 z, f32 w) :x(x), y(y), z(z), w(w)
 		{
 
 		}
@@ -116,10 +127,16 @@ namespace math
 		return result;
 	}
 
+	//q*v* q-1
+	//http://www.gamedev.net/topic/466725-quaternion-vector-product/
+	//  v + 2w(q x v) + 2*(q x (q x v))
 
-	inline Quaternion& operator*(const Quaternion& lhs, const Vector4& rhs)
+	inline Vector3 operator*(const Quaternion& lhs, const Vector3& rhs)
 	{
-
+		Vector3 qv = cross(lhs.v, rhs);
+		Vector3 qqv = cross(lhs.v, qv);
+		
+		return rhs + 2 * lhs.w * qv + 2 * qqv;
 	}
 
 	inline Quaternion operator*(const Quaternion& lhs, const f32 rhs)
