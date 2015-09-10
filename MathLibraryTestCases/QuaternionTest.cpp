@@ -1,7 +1,7 @@
 #pragma once
 #include <gtest\gtest.h>
 #include <Quaternion.h>
-
+#include "TestUtils.h"
 using namespace math;
 TEST(Quaternion, Constructor)
 {
@@ -69,15 +69,6 @@ TEST(Quaternion, QuaternionProductWithScaler)
 
 }
 
-TEST(Quaternion, QuaternionDivisionWithQuaternion)
-{
-
-}
-
-TEST(Quaternion, QuaternionDivisionEqualWithQuaternion)
-{
-
-}
 TEST(Quaternion, QuaternionDivisionWithScaler)
 {
 
@@ -112,6 +103,22 @@ TEST(Quaternion, Dot)
 
 TEST(Quaternion, Cross)
 {
+
+}
+TEST(Quaternion, Inverse)
+{
+	Quaternion q(1.0f, 2.0f, 3.0f, 4.0f);
+	q.normalize();
+
+	Quaternion q1 = inverse(q);
+	Vector3 v = Vector3{ 1, -2 , -3 };
+
+
+	Vector3  qv = q * v;
+	Vector3  qvv = (q1 * qv);
+	
+	EXPECT_TRUE(TestUtils::almostEqual(qvv,v));
+
 
 }
 

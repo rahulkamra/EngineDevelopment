@@ -22,7 +22,7 @@ namespace math
 			};
 		};
 
-		Quaternion(const Quaternion& rhs)
+		Quaternion(Quaternion& rhs)
 		{
 			this->x = rhs.x;
 			this->y = rhs.y;
@@ -59,6 +59,28 @@ namespace math
 
 			return *this;
 		}
+
+	public:
+		inline f32 lengthSquare() const
+		{
+			return this->x * this->x + this->y * this->y + this->z * this->z + this->w * this->w;
+		}
+
+		inline f32 length()
+		{
+			return sqrt(lengthSquare());
+		}
+
+
+		inline void normalize()
+		{
+			const f32 length = this->length(); 
+			this->x /= length;
+			this->y /= length;
+			this->z /= length;
+			this->w /= length;
+		}
+
 
 	};
 
@@ -152,17 +174,8 @@ namespace math
 	}
 
 
-	inline Quaternion& operator/(const Quaternion& lhs, const Quaternion& rhs)
-	{
 
-	}
-
-	inline Quaternion& operator/=(const Quaternion& lhs, const Quaternion& rhs)
-	{
-
-	}
-
-	inline Quaternion& operator/(const Quaternion& lhs, const f32 rhs)
+	inline Quaternion operator/(const Quaternion& lhs, const f32 rhs)
 	{
 		Quaternion result;
 
@@ -185,16 +198,6 @@ namespace math
 	}
 
 	
-	inline f32 lengthSquare(const Quaternion& source)
-	{
-		return source.x * source.x + source.y * source.y + source.z * source.z + source.w * source.w;
-	}
-
-	inline f32 length(const Quaternion& source)
-	{
-		return sqrt(lengthSquare(source));
-	}
-
 	inline f32 dot(const Quaternion& lhs , const Quaternion& rhs)
 	{
 		return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z + lhs.w * rhs.w;
@@ -207,13 +210,14 @@ namespace math
 
 	inline Quaternion conjugate(const Quaternion& source)
 	{
-
+		return Quaternion(-source.x, -source.y, -source.z, source.w);
 	}
 
-	inline Quaternion normalize(const Quaternion& source)
+	inline Quaternion inverse(const Quaternion& source)
 	{
-
+		return conjugate(source) / source.lengthSquare();
 	}
+
 
 
 	inline Quaternion axisAngleToQuaternion(const Vector3 axisAngle, f32 angleinRadians)
