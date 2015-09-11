@@ -3,31 +3,51 @@
 //yaw      //pitch    //roll
 //heading // attitude // bank
 
-struct EulerAngles
+namespace math
 {
-	EulerAngles(f32 yaw , f32 pitch , f32 roll):
-		yaw(yaw),
-		pitch(pitch),
-		roll(roll)
+	struct EulerAngles
 	{
 
-	}
-	union
-	{
-		struct 
+		EulerAngles() :
+			yaw(0),
+			pitch(0),
+			roll(0)
 		{
-			f32 yaw;
-			f32 pitch;
-			f32 roll;
-		};
 
-		struct
+		}
+
+		EulerAngles(f32 yaw, f32 pitch, f32 roll) :
+			yaw(yaw),
+			pitch(pitch),
+			roll(roll)
 		{
-			f32 heading;
-			f32 attitude;
-			f32 bank;
+
+		}
+		union
+		{
+			struct
+			{
+				f32 yaw;
+				f32 pitch;
+				f32 roll;
+			};
+
+			struct
+			{
+				f32 heading;
+				f32 attitude;
+				f32 bank;
+			};
+
+			struct
+			{
+				f32 y;
+				f32 z;
+				f32 x;
+			};
+
 		};
 
 	};
-	
-};
+}
+

@@ -144,25 +144,63 @@ TEST(Quaternion, axisAngleToQuaternion)
 
 TEST(Quaternion, eulerAnglesToQuaternion)
 {
-	EulerAngles eu(degToRad(45), degToRad(45), degToRad(45));
+	EulerAngles eu(degToRad(30), degToRad(45), degToRad(60));
 	Quaternion result = eulerAnglesToQuaternion(eu);
-	Quaternion result1 = Quaternion(0.461939f, 0.461939f, 0.19134f, 0.73253f);
+	Quaternion result1 = Quaternion(0.5319f, 0.3919f, 0.2005f, 0.72331f);
 	EXPECT_TRUE(TestUtils::almostEqual(result, result1));
+
+
+	EulerAngles eu2(degToRad(0), degToRad(90), degToRad(180));
+	Quaternion result2 = eulerAnglesToQuaternion(eu2);
+	Quaternion result3 = Quaternion(0.707106f, 0.707106f, 0.0f, 0.0f);
+	EXPECT_TRUE(TestUtils::almostEqual(result2, result3));
+
+}
+
+TEST(Quaternion, quaternionToEulerAngles)
+{
+	Quaternion test1(1, 1, 0, 1);
+	EulerAngles result1 =  quaternionToEulerAngles(test1);
+	EulerAngles hardResult1(MATH_PI_2, MATH_PI_2, 0);
+	EXPECT_TRUE(TestUtils::almostEqual(result1, hardResult1));
+
+	Quaternion test2(0.53, 0.39, 0.72 ,0.72);
+	EulerAngles result2 = quaternionToEulerAngles(test2);
+	EulerAngles hardResult2(degToRad(72.71439), degToRad(90), 0);
+	EXPECT_TRUE(TestUtils::almostEqual(result2, hardResult2));
+	
 }
 
 TEST(Quaternion, matrix4ToQuaternion)
 {
+	Matrix4 test1;
+	Quaternion result1 = matrix4ToQuaternion(test1);
+	Quaternion hardResult1(0,0,0,1);
+	EXPECT_TRUE(TestUtils::almostEqual(result1, hardResult1));
+
+	Matrix4 test2{ {0.1f,0.2f,0.3f,0},{ 0.4f,0.5f,0.6f,0},{ 0.7f,0.8f,0.9f,0},{0,0,0,1}};
+	Quaternion result2 = matrix4ToQuaternion(test2);
+	Quaternion hardResult2(-0.063245f, 0.1264911f, -0.063245f, 0.7905694);
+	EXPECT_TRUE(TestUtils::almostEqual(result2, hardResult2));
+
+	Matrix4 test3(Matrix3({ 1.0f,0.2f,0.3f},{ 0.4f,0.5f,0.6f},{ 0.7f,0.8f,-3.0f}));
+	Quaternion result3 = matrix4ToQuaternion(test3);
+	Quaternion hardResult3(1.060660f, 0.141421f, 0.23570f, -0.04714f);
+	EXPECT_TRUE(TestUtils::almostEqual(result3, hardResult3));
+
+
+	Matrix4 test4(Matrix3({ -15.0f,0.2f,0.3f }, { 0.4f,0.5f,0.6f }, { 0.7f,0.8f,-3.0f }));
+	Quaternion result4 = matrix4ToQuaternion(test4);
+	Quaternion hardResult4(0.0679366f, 2.2079f, 0.15851f, 0.045291f);
+	EXPECT_TRUE(TestUtils::almostEqual(result4, hardResult4));
+
+	Matrix4 test5(Matrix3({ -3.0f,0.2f,0.3f }, { 0.4f,-2.0f,0.6f }, { 0.7f,0.8f,-1.0f }));
+	Quaternion result5 = matrix4ToQuaternion(test5);
+	Quaternion hardResult5(0.2236067f, 0.3130495f, 1.11803f, -0.04472f);
+	EXPECT_TRUE(TestUtils::almostEqual(result5, hardResult5));
 
 }
-TEST(Quaternion, quaternionToAxis)
-{
 
-}
-
-TEST(Quaternion, quaternionToAngle)
-{
-
-}
 
 TEST(Quaternion, slerp)
 {

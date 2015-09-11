@@ -144,7 +144,7 @@ TEST(Vector2, Length)
 {
 	Vector2 vec1(1, 2);
 
-	EXPECT_TRUE(vec1.length() == sqrt(5.00f));
+	EXPECT_TRUE(vec1.length() == math::sqrt(5.00f));
 }
 
 

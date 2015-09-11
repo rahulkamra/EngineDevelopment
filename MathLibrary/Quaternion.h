@@ -4,6 +4,8 @@
 #include <Vector4.h>
 #include <Matrix4.h>
 #include <EulerAngles.h>
+#include <AxisAngle.h>
+#include <MathUtils.h>
 namespace math
 {
 	struct Quaternion
@@ -230,17 +232,10 @@ namespace math
 		return source / length(source);
 	}
 
-	//http://www.euclideanspace.com/maths/geometry/rotations/conversions/angleToQuaternion/
-	inline Quaternion axisAngleToQuaternion(const Vector3 axis, f32 angleinRadians)
-	{
-		f32 sin = math::sin(angleinRadians/2);
-		f32 cos = math::sin(angleinRadians/2);
-
-		return Quaternion(axis.x*sin, axis.y*sin, axis.z*sin, cos);
-	}
 
 	//http://www.euclideanspace.com/maths/geometry/rotations/conversions/eulerToQuaternion/index.htm
-
+	/*
+	*/
 	inline Quaternion eulerAnglesToQuaternion(const EulerAngles eulerAngles)
 	{
 		f32 c1 = math::cos(eulerAngles.heading / 2);
@@ -248,8 +243,8 @@ namespace math
 		f32 c3 = math::cos(eulerAngles.bank / 2);
 
 		f32 s1 = math::sin(eulerAngles.heading / 2);
-		f32 s2 = math::sin(eulerAngles.heading / 2);
-		f32 s3 = math::sin(eulerAngles.heading / 2);
+		f32 s2 = math::sin(eulerAngles.attitude / 2);
+		f32 s3 = math::sin(eulerAngles.bank / 2);
 
 		return Quaternion(
 			s1*s2*c3 + c1*c2*s3,
@@ -258,13 +253,83 @@ namespace math
 			c1*c2*c3 - s1*s2*s3);
 	}
 
-	inline EulerAngles QuaternionToEulerAngles(const Quaternion& source)
+	//http://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToEuler/
+	/*
+	*/
+	inline EulerAngles quaternionToEulerAngles(const Quaternion& source)
 	{
+		EulerAngles result;
+		f32 xy = source.x*source.y;
+		f32 zw = source.z*source.w;
+		f32 singularityTest = xy + zw;
 
+		if (singularityTest > 0.499f)
+		{
+			result.heading = 2 * atan2(source.x , source.w);
+			result.attitude = MATH_PI_2;
+			result.bank = 0;
+			return result;
+		}
+		else if (singularityTest < -0.499f)
+		{
+			result.heading = -2 * atan2(source.x, source.w);
+			result.attitude = -MATH_PI_2;
+			result.bank = 0;
+			return result;
+		}
+
+		//normal case
+
+		f32 xx = source.x * source.x;
+		f32 yy = source.y * source.y;
+		f32 zz = source.z * source.z;
+
+		result.heading = atan2(2 * source.y*source.w - 2 * source.x*source.z, 1 - 2*yy - 2*zz);
+		result.attitude = asin(2 * source.x*source.y + 2 * source.z*source.w);
+		result.bank = atan2(2 * source.x*source.w - 2 * source.y*source.z, 1 - 2*xx - 2*zz);
+		return result;
 	}
-
+	//http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToQuaternion/index.htm
+	/*
+	*/
 	inline Quaternion matrix4ToQuaternion(const Matrix4& source)
 	{
+		Quaternion result;
+		f32 tr = source[0][0] + source[1][1] + source[2][2];
+		f32 s = 0;
+		if (tr > 0)
+		{
+			s = sqrt(tr + 1.0f) * 2;
+			result.x = (source[1][2] - source[2][1]) / s;
+			result.y = (source[2][0] - source[0][2]) / s;
+			result.z = (source[0][1] - source[1][0]) / s;
+			result.w = 0.25f * s;
+		}
+		else if ((source[0][0] > source[1][1]) && (source[0][0] > source[2][2]))
+		{
+			s = sqrt(1.0f + source[0][0] - source[1][1] - source[2][2]) * 2.0f;
+			result.x = 0.25f * s;
+			result.y = (source[1][0] + source[0][1]) / s;
+			result.z = (source[2][0] + source[0][2]) / s;
+			result.w = (source[1][2] - source[2][1]) / s;
+		}
+		else if (source[1][1] > source[2][2])
+		{
+			s = sqrt(1.0f + source[1][1] - source[0][0] - source[2][2]) * 2.0f;
+			result.x = (source[1][0] + source[0][1]) / s;
+			result.y = 0.25f * s;
+			result.z = (source[1][2] + source[2][1]) / s;
+			result.w = (source[2][0] - source[0][2]) / s;
+		}
+		else
+		{
+			s = sqrt(1.0f + source[2][2] - source[0][0] - source[1][1]) * 2.0f;
+			result.x = (source[2][0] + source[0][2]) / s;
+			result.y = (source[1][2] + source[2][1]) / s;
+			result.z = 0.25f * s;
+			result.w = (source[0][1] - source[1][0]) / s;
+		}
+		return result;
 
 	}
 
@@ -273,14 +338,44 @@ namespace math
 
 	}
 
-	inline Vector3 quaternionToAxis(const Quaternion& source)
+	//http://www.euclideanspace.com/maths/geometry/rotations/conversions/angleToQuaternion/
+	/*
+	*/
+	inline Quaternion axisAngleToQuaternion(const AxisAngle& axisAngle)
 	{
+		f32 sin = math::sin(axisAngle.angle / 2);
+		f32 cos = math::sin(axisAngle.angle / 2);
 
+		return Quaternion(axisAngle.axis.x*sin, axisAngle.axis.y*sin, axisAngle.axis.z*sin, cos);
 	}
 
-	inline Vector3 quaternionToAngle(const Quaternion& source)
+	//http://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToAngle/index.htm
+	/*
+	*/
+	inline AxisAngle quaternionToAxisAngle(Quaternion& source)
 	{
 
+		if (source.x > 1)
+			source.normalize();
+
+		f32 angle = 2 * acos(source.w);
+		f32 mult = 1/sqrt(1 - source.w * source.w);
+
+		AxisAngle result;
+		result.angle = angle;
+		if (mult < 0.001)
+		{
+			result.axis.x = source.x;
+			result.axis.y = source.y;
+			result.axis.z = source.z;
+		}
+		else
+		{
+			result.axis.x = source.x * mult;
+			result.axis.y = source.y * mult;
+			result.axis.z = source.z * mult;
+		}
+		return result;
 	}
 
 	inline Quaternion slerp(const Quaternion& from , const Quaternion& to , f32 dt)

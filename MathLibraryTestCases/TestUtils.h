@@ -73,5 +73,10 @@ public :
 		return almostEqual(lhs.x, rhs.x) && almostEqual(lhs.y, rhs.y) && almostEqual(lhs.z, rhs.z) && almostEqual(lhs.w, rhs.w);
 	}
 
+	bool static almostEqual(const EulerAngles& lhs, const EulerAngles& rhs)
+	{
+		return almostEqual(lhs.pitch, rhs.pitch) && almostEqual(lhs.yaw, rhs.yaw) && almostEqual(lhs.roll, rhs.roll);
+	}
+
 };
 

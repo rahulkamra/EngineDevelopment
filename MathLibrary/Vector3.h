@@ -1,7 +1,8 @@
 #pragma once
 #include <MathDefine.h>
 #include <Types.h>
-#include "MathUtils.h"
+#include <MathUtils.h>
+#include <Vector2.h>
 #include <iostream>
 
 namespace math
@@ -50,6 +51,13 @@ namespace math
 			this->x = source.x;
 			this->y = source.y;
 			this->z = source.z;
+		}
+
+		Vector3(const Vector2& source)
+		{
+			this->x = source.x;
+			this->y = source.y;
+			this->z = 1;
 		}
 
 		inline Vector3& operator=(const Vector3& rhs)

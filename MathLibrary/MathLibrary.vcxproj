@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AxisAngle.h" />
     <ClInclude Include="EulerAngles.h" />
     <ClInclude Include="MathDefine.h" />
     <ClInclude Include="MathUtils.h" />

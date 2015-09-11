@@ -36,6 +36,15 @@ namespace math
 		return rad * MATH_RAD_DEG;
 	}
 
+	inline f32  atan2(f32 x , f32 y)
+	{
+		return _CSTD atan2(x,y);
+	}
+
+	inline f32  sqrt(f32 value)
+	{
+		return _CSTD sqrt(value);
+	}
 }
 
 

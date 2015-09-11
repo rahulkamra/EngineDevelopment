@@ -57,12 +57,26 @@ namespace math
 			this->w = source.w;
 		}
 
+		Vector4(const Vector3& source)
+		{
+			operator=(source);
+		}
+
 		inline Vector4& operator=(const Vector4& rhs)
 		{
 			this->x = rhs.x;
 			this->y = rhs.y;
 			this->z = rhs.z;
 			this->w = rhs.w;
+			return *this;
+		}
+
+		inline Vector4& operator=(const Vector3& rhs)
+		{
+			this->x = rhs.x;
+			this->y = rhs.y;
+			this->z = rhs.z;
+			this->w = 1;
 			return *this;
 		}
 

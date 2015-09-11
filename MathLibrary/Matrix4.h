@@ -1,6 +1,7 @@
 #pragma once
 #include <MathDefine.h>
 #include <Vector4.h>
+#include <Matrix3.h>
 #include <math.h>
 #include <array>
 
@@ -14,9 +15,9 @@ namespace math
 	m[0][3] m[1][3] m[2][3] m[3][3]
 	//Column major matrix and this is how it can be accessed
 	*/
+
 	struct Matrix4
 	{
-
 		union
 		{
 			struct
@@ -27,7 +28,7 @@ namespace math
 			Vector4 vectors[4];
 		};
 
-
+		
 		Matrix4(const Matrix4& rhs)
 		{
 			this->x = rhs.x;
@@ -35,6 +36,8 @@ namespace math
 			this->z = rhs.z;
 			this->w = rhs.w;
 		}
+
+	
 
 		explicit Matrix4() :
 			x(1, 0, 0, 0),
@@ -52,6 +55,11 @@ namespace math
 		{
 
 		}
+		explicit Matrix4(const Matrix3& source)
+		{
+			operator=(Matrix4());
+			operator=(source);
+		}
 
 		//we need const as well as non cost operators.
 		inline const Vector4& operator[](usize index) const { return vectors[index]; }
@@ -64,6 +72,15 @@ namespace math
 				(*this)[col] = rhs[col];
 			}
 
+			return *this;
+		}
+
+		inline Matrix4& operator=(const Matrix3& rhs)
+		{
+			for (usize col = 0; col < 3; col++)
+			{
+				(*this)[col] = rhs[col];
+			}
 			return *this;
 		}
 
@@ -303,3 +320,5 @@ namespace math
 	}
 
 }
+
+
