@@ -48,5 +48,8 @@
     <ClInclude Include="EulerAngles.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="MathUtils.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -203,11 +203,6 @@ namespace math
 		return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z + lhs.w * rhs.w;
 	}
 
-	inline f32 cross(const Quaternion& lhs, const Quaternion& rhs)
-	{
-
-	}
-
 	inline Quaternion conjugate(const Quaternion& source)
 	{
 		return Quaternion(-source.x, -source.y, -source.z, source.w);
@@ -235,12 +230,35 @@ namespace math
 		return source / length(source);
 	}
 
-	inline Quaternion axisAngleToQuaternion(const Vector3 axisAngle, f32 angleinRadians)
+	//http://www.euclideanspace.com/maths/geometry/rotations/conversions/angleToQuaternion/
+	inline Quaternion axisAngleToQuaternion(const Vector3 axis, f32 angleinRadians)
 	{
+		f32 sin = math::sin(angleinRadians/2);
+		f32 cos = math::sin(angleinRadians/2);
 
+		return Quaternion(axis.x*sin, axis.y*sin, axis.z*sin, cos);
 	}
 
+	//http://www.euclideanspace.com/maths/geometry/rotations/conversions/eulerToQuaternion/index.htm
+
 	inline Quaternion eulerAnglesToQuaternion(const EulerAngles eulerAngles)
+	{
+		f32 c1 = math::cos(eulerAngles.heading / 2);
+		f32 c2 = math::cos(eulerAngles.attitude / 2);
+		f32 c3 = math::cos(eulerAngles.bank / 2);
+
+		f32 s1 = math::sin(eulerAngles.heading / 2);
+		f32 s2 = math::sin(eulerAngles.heading / 2);
+		f32 s3 = math::sin(eulerAngles.heading / 2);
+
+		return Quaternion(
+			s1*s2*c3 + c1*c2*s3,
+			s1*c2*c3 + c1*s2*s3,
+			c1*s2*c3 - s1*c2*s3,
+			c1*c2*c3 - s1*s2*s3);
+	}
+
+	inline EulerAngles QuaternionToEulerAngles(const Quaternion& source)
 	{
 
 	}
@@ -250,7 +268,7 @@ namespace math
 
 	}
 
-	inline Matrix4 matrix4ToQuaternion(const Quaternion& source)
+	inline Matrix4 quaternionToMatrix4(const Quaternion& source)
 	{
 
 	}

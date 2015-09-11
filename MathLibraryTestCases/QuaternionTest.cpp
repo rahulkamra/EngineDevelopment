@@ -101,10 +101,6 @@ TEST(Quaternion, Dot)
 }
 
 
-TEST(Quaternion, Cross)
-{
-
-}
 TEST(Quaternion, Inverse)
 {
 	Quaternion q(1.0f, 2.0f, 3.0f, 4.0f);
@@ -148,7 +144,10 @@ TEST(Quaternion, axisAngleToQuaternion)
 
 TEST(Quaternion, eulerAnglesToQuaternion)
 {
-
+	EulerAngles eu(degToRad(45), degToRad(45), degToRad(45));
+	Quaternion result = eulerAnglesToQuaternion(eu);
+	Quaternion result1 = Quaternion(0.461939f, 0.461939f, 0.19134f, 0.73253f);
+	EXPECT_TRUE(TestUtils::almostEqual(result, result1));
 }
 
 TEST(Quaternion, matrix4ToQuaternion)

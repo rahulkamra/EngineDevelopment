@@ -2,13 +2,40 @@
 
 #include <Types.h>
 #include <cmath>
-
-class MathUtils
+#include <MathDefine.h>
+namespace math
 {
-public:
-	inline f32 static acos(f32 scalar)
+	inline f32  acos(f32 scalar)
 	{
 		return _CSTD acos(scalar);
 	}
 
-};
+	inline f32  cos(f32 scalar)
+	{
+		return _CSTD cos(scalar);
+	}
+
+	inline f32  sin(f32 scalar)
+	{
+		return _CSTD sin(scalar);
+	}
+
+	inline f32  asin(f32 scalar)
+	{
+		return _CSTD asin(scalar);
+	}
+
+	inline f32  degToRad(f32 deg)
+	{
+		return deg * MATH_DEG_RAD;
+
+	}
+
+	inline f32  radToDeg(f32 rad)
+	{
+		return rad * MATH_RAD_DEG;
+	}
+
+}
+
+

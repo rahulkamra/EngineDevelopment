@@ -239,7 +239,7 @@ namespace math
 	//Forumula a.b/|a|*|b|
 	inline f32 angle(Vector3& lhs, Vector3& rhs)
 	{
-		return MathUtils::acos(dot(lhs, rhs) / (lhs.length()*rhs.length()));
+		return acos(dot(lhs, rhs) / (lhs.length()*rhs.length()));
 	}
 
 	inline std::ostream& operator<<(std::ostream &out, Vector3& source)
