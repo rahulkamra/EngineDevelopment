@@ -408,4 +408,12 @@ namespace math
 
 	}
 
+	inline std::ostream& operator<<(std::ostream &out, Quaternion& source)
+	{
+		out << "Quaternion(" << source.x << ", " <<
+			source.y << ", " <<
+			source.z << "," <<
+			source.w << ")";
+		return out;
+	}
 }
