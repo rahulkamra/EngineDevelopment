@@ -335,7 +335,32 @@ namespace math
 
 	inline Matrix4 quaternionToMatrix4(const Quaternion& source)
 	{
+		f32 xx = source.x * source.x;
+		f32 yy = source.y * source.y;
+		f32 zz = source.z * source.z;
 
+		f32 xy2 = 2.0f * source.x * source.y;
+		f32 yz2 = 2.0f * source.y * source.z;
+		f32 zw2 = 2.0f * source.z * source.w;
+		f32 yw2 = 2.0f * source.y * source.w;
+		f32 xw2 = 2.0f * source.x * source.w;
+		f32 xz2 = 2.0f * source.x * source.z;
+
+		Matrix4 result;
+
+		result[0][0] = 1.0f - 2.0f * (yy + zz);
+		result[0][1] = xy2 + zw2;
+		result[0][2] = xz2 - yw2;
+
+		result[1][0] = xy2 - zw2;
+		result[1][1] = 1.0f - 2.0f * (xx + zz);;
+		result[1][2] = yz2 + xw2;
+
+		result[2][0] = xz2 + yw2;
+		result[2][1] = yz2 - xw2;
+		result[2][2] = 1.0f - 2.0f * (xx + yy);
+
+		return result;
 	}
 
 	//http://www.euclideanspace.com/maths/geometry/rotations/conversions/angleToQuaternion/

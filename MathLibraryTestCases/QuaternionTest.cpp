@@ -201,6 +201,20 @@ TEST(Quaternion, matrix4ToQuaternion)
 
 }
 
+TEST(Quaternion, quaternionToMatrix4)
+{
+	Quaternion test1(0.859f,0.803f,0.27, 0.538f);
+	Matrix4 result1 =quaternionToMatrix4(test1);
+	Matrix4 hardResult1(Matrix3
+		(
+		{ -0.435417891f,1.67007f,-0.40016f},
+		{ 1.08903f,-0.621562123f,1.3579f },
+		{ 1.32788f,-0.49066f,-1.76537991f }
+		));
+
+	EXPECT_TRUE(TestUtils::almostEqual(result1, hardResult1));
+
+}
 
 TEST(Quaternion, slerp)
 {

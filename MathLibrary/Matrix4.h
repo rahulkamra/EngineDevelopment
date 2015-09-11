@@ -79,7 +79,10 @@ namespace math
 		{
 			for (usize col = 0; col < 3; col++)
 			{
-				(*this)[col] = rhs[col];
+				for (usize row = 0; row < 3; row++)
+				{
+					(*this)[col][row] = rhs[col][row];
+				}
 			}
 			return *this;
 		}
