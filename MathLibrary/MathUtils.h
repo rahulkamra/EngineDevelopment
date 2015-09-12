@@ -5,20 +5,25 @@
 #include <MathDefine.h>
 namespace math
 {
-	inline f32  acos(f32 scalar)
+	inline f32  acos(f32 angle)
 	{
-		return _CSTD acos(scalar);
+		return _CSTD acos(angle);
 	}
 
-	inline f32  cos(f32 scalar)
+	inline f32  cos(f32 angle)
 	{
-		return _CSTD cos(scalar);
+		return _CSTD cos(angle);
 	}
 
-	inline f32  sin(f32 scalar)
+	inline f32  sin(f32 angle)
 	{
-		return _CSTD sin(scalar);
+		return _CSTD sin(angle);
 	}
+	inline f32  tan(f32 angle)
+	{
+		return _CSTD tan(angle);
+	}
+
 
 	inline f32  asin(f32 scalar)
 	{

@@ -403,6 +403,18 @@ namespace math
 		return result;
 	}
 
+	//http://lolengine.net/blog/2013/09/18/beautiful-maths-quaternion-from-vectors
+	/*
+		not tested	
+	*/
+	inline Quaternion fromTwoVectors(Vector3 u, Vector3 v)
+	{
+		f32 m = sqrt(2.0f + 2.0f*dot(u, v));
+		Vector3 w = (1.0f/m) * cross(u, v);
+		Quaternion result(w.x, w.y, w.z, 0.5f * m);
+		return normalize(result);
+	}
+
 	inline Quaternion slerp(const Quaternion& from , const Quaternion& to , f32 dt)
 	{
 

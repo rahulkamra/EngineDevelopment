@@ -80,8 +80,14 @@ namespace math
 
 		inline f32 length() const
 		{
-			return sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
+			return sqrt(lengthSquare());
 		}
+
+		inline f32 lengthSquare() const
+		{
+			return this->x * this->x + this->y * this->y + this->z * this->z;
+		}
+
 
 		inline void normalize()
 		{

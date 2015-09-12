@@ -194,3 +194,31 @@ TEST(Matrix4, Inverse)
 	EXPECT_TRUE(determinant(product) == 1.0f);
 	
 }
+
+TEST(Matrix4, lookAt)
+{
+	Matrix4 look1 = lookAt({ 1,2,3 }, { 4,5,6 }, { 0,1,0 });
+	Matrix4 look2 = lookAt2({ 1,2,3 }, { 4,5,6 }, { 0,1,0 });
+	EXPECT_TRUE(look1 == look2);
+}
+
+TEST(Matrix4, perspective)
+{
+	Matrix4 perspective1 = perspective(70 , (f32)1024/768,0,10);
+	Matrix4 hardPresective(
+	{ 1.07111f,0.00000f,0.00000f,0.00000f },
+	{ 0.00000f,1.42815f,0.00000f,0.00000f },
+	{ 0.00000f,0.00000f,-1.00000f,-1.00000f },
+	{ 0.00000f,0.00000f,0.00000f,0.00000f });
+
+	Matrix4 perspective2 = perspective(155, (f32)1024 / 768, -10, 30);
+
+	Matrix4 hardPresective2(
+	{ 0.16627f	,0.00000f,	0.00000f	,0.00000f },
+	{ 0.00000f	,0.22169f,	0.00000f	,0.00000f },
+	{ 0.00000f	,0.00000f,	-0.50000f	,-1.00000f },
+	{ 0.00000f	,0.00000f,	15.00000f	,0.00000f });
+
+	EXPECT_TRUE(TestUtils::almostEqual(perspective2, hardPresective2));
+	
+}

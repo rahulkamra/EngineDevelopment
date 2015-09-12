@@ -39,9 +39,6 @@
     <ClInclude Include="Vector4.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="MatrixTransform.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Quaternion.h">
       <Filter>Source Files</Filter>
     </ClInclude>

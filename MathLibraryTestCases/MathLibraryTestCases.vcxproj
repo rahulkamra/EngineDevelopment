@@ -15,7 +15,6 @@
     <ClCompile Include="Matrix2Test.cpp" />
     <ClCompile Include="Matrix3Test.cpp" />
     <ClCompile Include="Matrix4Test.cpp" />
-    <ClCompile Include="MatrixTransformTest.cpp" />
     <ClCompile Include="QuaternionTest.cpp" />
     <ClCompile Include="Vector2Test.cpp" />
     <ClCompile Include="Vector3Test.cpp" />

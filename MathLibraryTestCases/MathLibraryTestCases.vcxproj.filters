@@ -33,9 +33,6 @@
     <ClCompile Include="Matrix4Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MatrixTransformTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="QuaternionTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -1,7 +1,11 @@
-﻿Build started 9/11/2015 10:22:21 PM.
+﻿Build started 9/12/2015 4:16:31 PM.
      1>Project "F:\Work\OpenGL\EngineDevelopment\trunk\MathLibraryTestCases\MathLibraryTestCases.vcxproj" on node 3 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Matrix2Test.cpp Matrix3Test.cpp Matrix4Test.cpp QuaternionTest.cpp Vector2Test.cpp Vector3Test.cpp
+         Matrix2Test.cpp
+         Generating Code...
+     1>f:\work\opengl\enginedevelopment\trunk\mathlibrary\matrix2.h(162): warning C4172: returning address of local variable or temporary: ret
+         Compiling...
          Vector3Test.cpp
          Vector2Test.cpp
          QuaternionTest.cpp
@@ -12,9 +16,7 @@
      1>f:\work\opengl\enginedevelopment\trunk\mathlibrarytestcases\quaterniontest.cpp(206): warning C4305: 'argument': truncation from 'double' to 'f32'
          Matrix4Test.cpp
          Matrix3Test.cpp
-         Matrix2Test.cpp
          Generating Code...
-     1>f:\work\opengl\enginedevelopment\trunk\mathlibrary\matrix2.h(162): warning C4172: returning address of local variable or temporary: ret
      1>f:\work\opengl\enginedevelopment\trunk\mathlibrary\matrix3.h(156): warning C4172: returning address of local variable or temporary: ret
      1>f:\work\opengl\enginedevelopment\trunk\mathlibrary\matrix4.h(180): warning C4172: returning address of local variable or temporary: ret
        Link:
@@ -22,7 +24,6 @@
          Debug\Matrix2Test.obj
          Debug\Matrix3Test.obj
          Debug\Matrix4Test.obj
-         Debug\MatrixTransformTest.obj
          Debug\QuaternionTest.obj
          Debug\Vector2Test.obj
          Debug\Vector3Test.obj
@@ -31,4 +32,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.73
+Time Elapsed 00:00:05.66
