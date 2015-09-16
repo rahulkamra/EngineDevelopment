@@ -8,6 +8,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathLibraryTestCases", "MathLibraryTestCases\MathLibraryTestCases.vcxproj", "{A17ADF27-8CD9-45AB-B9D7-2685B748F4FC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloWorld", "HelloWorld\HelloWorld.vcxproj", "{0BFADA73-33B6-4AFC-A684-A95A3CCCEFD2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E6FF0FAF-4666-4B12-B3AE-C3DCB801BFBF} = {E6FF0FAF-4666-4B12-B3AE-C3DCB801BFBF}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameEngine", "GameEngine\GameEngine.vcxproj", "{E6FF0FAF-4666-4B12-B3AE-C3DCB801BFBF}"
 EndProject
