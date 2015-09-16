@@ -1,1 +1,3 @@
 1. Can i define an  implicit conversion for my own type , in this case its efloat which is a typedef to float. I want to implicit convert into std::string.
+
+SDL Builds for VS2015 : https://buildbot.libsdl.org/sdl-builds/sdl-visualstudio/
