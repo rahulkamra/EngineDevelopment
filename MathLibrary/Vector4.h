@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include <MathDefine.h>
 #include <Types.h>
 #include "MathUtils.h"

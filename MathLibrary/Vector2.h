@@ -1,8 +1,8 @@
 #pragma once;
-
 #include <MathDefine.h>
 #include <Types.h>
 #include <MathUtils.h>
+#include <iostream>
 namespace math
 {
 	struct Vector2
