@@ -25,6 +25,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A17ADF27-8CD9-45AB-B9D7-2685B748F4FC}</ProjectGuid>
     <RootNamespace>MathLibraryTestCases</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -52,6 +53,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(SolutionDir)\MathLibrary\;$(SolutionDir)\external\gtest\;$(IncludePath)</IncludePath>
+    <IntDir>$(SolutionDir)..\Temp\MathLibraryTestCases\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IntDir>$(SolutionDir)..\Temp\MathLibraryTestCases\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
