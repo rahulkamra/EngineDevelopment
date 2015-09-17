@@ -1,24 +1,16 @@
-#include <HelloEngine.h>
 #include <SDL.h>
-#include <Vector4.h>
+#include <HelloEngine.h>
 
 void HelloEngine::helloWorld()
 {
-	std::cout << "hello";
-}
+//	logError("1", "3");
+	while (true);
 
-SDL_Window* HelloEngine::getWindow()
+	//std::cout << "hello";
+
+}
+void HelloEngine::helloWorld2()
 {
-	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
-	{
-		return nullptr;
-	}
 
-	math::Vector3 temp;
-
-	SDL_Window* window = SDL_CreateWindow("Test", 100, 100, 400, 400, SDL_WINDOW_SHOWN);
-	SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	return window;
 }
-
 

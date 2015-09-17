@@ -1,9 +1,11 @@
 #pragma once
 #include <EngineTypes.h>
-#include <SDL.h>
+class SDL_Window;
+
 class DLL_EXPORT HelloEngine
 {
 public:
 	void helloWorld();
-	SDL_Window* getWindow();
+	void helloWorld2();
+	
 };
