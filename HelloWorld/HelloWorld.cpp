@@ -2,13 +2,12 @@
 #include <HelloEngine.h>
 #include <Window.h>
 #include <SDL.h>
+#include <Engine.h>
 int main(int argc, char* argv[])
 {
-	HelloEngine h;
+	Engine* engine = new Engine();
+	Window* main =  engine->init(argc, argv);
 	
-	
-	Window w(100,100,300,300,"asd");
-	while (true);
 
 	return 1;
 	
